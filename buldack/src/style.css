@@ -1,96 +1,369 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
+/* General styling for dark mode */
 body {
   margin: 0;
+  font-family: "Quicksand", Arial, sans-serif;
+  background-color: #121212; /* Dark background */
+  color: #e0e0e0; /* Light gray text for readability */
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Top bar styling for dark mode */
+.top-bar {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(145deg, #333333, #1c1c1c); /* Dark gradient */
+  color: #ffffff;
+  padding: 10px 40px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5); /* Deeper shadow */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 2px solid #444444; /* Darker border */
+  transition: background-color 0.3s ease;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Website name styling */
+#website-name {
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: #ffffff;
+  margin: 0;
   text-align: center;
+  padding: 10px 0;
+  position: relative;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.9),
+    0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.7);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
+/* Gradient background effect for the website name */
+#website-name {
+  background: linear-gradient(to right, #ff5f6d, #ffc3a0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  text-shadow: none;
 }
 
-.card {
-  padding: 2em;
+/* Menu container on the right */
+.menu {
+  display: flex;
+  gap: 30px;
 }
 
-.read-the-docs {
-  color: #888;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+/* Menu item styling */
+.menu-item {
+  position: relative;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #ffffff;
+  transition: color 0.3s ease, transform 0.3s ease;
+  text-transform: capitalize;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.menu-item:hover {
+  color: #ff7043; /* Coral on hover */
+  transform: scale(1.1);
+}
+
+/* Dropdown menu for dark mode */
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #333333; /* Dark dropdown background */
+  border-radius: 8px;
+  min-width: 200px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* Darker shadow */
+  overflow: hidden;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+/* Links inside the dropdown */
+.dropdown a {
+  display: block;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: #e0e0e0; /* Light gray for readability */
+  font-size: 0.9rem;
+  font-weight: 400;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    padding-left 0.2s ease;
+}
+
+/* Hover effect on dropdown links */
+.dropdown a:hover {
+  background-color: #ff7043; /* Warm coral background on hover */
+  color: #ffffff;
+  padding-left: 25px;
+}
+
+/* Show dropdown on hover with fade-in effect */
+.menu-item:hover .dropdown {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease, visibility 0s linear 0s;
+}
+
+/* Section styling for top-ranked anime */
+.top-ranked-anime {
+  padding: 40px 20px;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Darker shadow */
+  margin-top: 40px;
+  margin-bottom: 40px;
+  background: #1f1f1f; /* Dark background */
+}
+
+/* Website intro container */
+#website-into {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7); /* Darker background */
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Paragraph styling */
+.top-ranked-anime p {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 100;
+  line-height: 1.6;
+  color: #e0e0e0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .top-ranked-anime {
+    padding: 20px 15px;
   }
-  a:hover {
-    color: #747bff;
+
+  .top-ranked-anime p {
+    font-size: 1.1rem;
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+.main-titles {
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #e0e0e0;
+  margin-top: 80px;
+  padding: 0;
+}
+
+/* Styling for top-five-anime container */
+#top-five-anime {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 40px;
+  gap: 20px;
+  padding: 40px 20px;
+  border-radius: 10px;
+  color: #ffffff;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25); /* Darker shadow */
+  background: #1c1c1c; /* Dark background */
+}
+
+/* Anime card hover effect */
+#top-five-anime .anime-card {
+  background: rgba(0, 0, 0, 0.5); /* Darker background for the card */
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  width: 200px;
+  height: 270px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#top-five-anime .anime-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35); /* Darker shadow */
+}
+
+/* Anime title text */
+#top-five-anime .anime-card .anime-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Anime image styling */
+#top-five-anime .anime-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-bottom: 4px solid #ffffff;
+  border-radius: 8px 8px 0 0;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  #top-five-anime {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #top-five-anime .anime-card {
+    max-width: 100%;
+  }
+
+  #top-five-anime .anime-title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #top-five-anime {
+    grid-template-columns: 1fr;
+  }
+
+  #top-five-anime .anime-title {
+    font-size: 1rem;
+  }
+}
+
+/* General form styling */
+#suggestion-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #333333; /* Dark background */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Darker shadow */
+  margin-top: 40px;
+  font-family: "Quicksand", Arial, sans-serif;
+  color: #e0e0e0;
+}
+
+/* Fieldset in form */
+#suggestion-form fieldset {
+  border: 1px solid #444444; /* Dark border */
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #444444; /* Dark background */
+}
+
+#suggestion-form legend {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1em;
+  color: #e0e0e0;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* Radio buttons */
+#suggestion-form label {
+  display: inline-block;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  color: #e0e0e0;
+  padding-left: 20px;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+#suggestion-form input[type="radio"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #444444;
+  border: 3px solid #ff7f50;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#suggestion-form input[type="radio"]:checked {
+  background-color: #ff7f50;
+}
+
+#suggestion-form input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: white;
+  transform: translate(-50%, -50%);
+}
+
+#suggestion-form input[type="radio"]:hover {
+  background-color: #ff7043;
+}
+
+#suggestion-form label:hover {
+  color: #ff7043;
+}
+
+/* Submit button styling */
+#suggestion-form button {
+  background-color: #ff7f50;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: block;
+  margin-top: 20px;
+  width: 100%;
+}
+
+#suggestion-form button:hover {
+  background-color: #ff7043;
+  transform: scale(1.05);
+}
+
+/* Responsive form styling */
+@media (max-width: 768px) {
+  #suggestion-form {
+    padding: 20px;
+  }
+
+  #suggestion-form fieldset {
+    padding: 15px;
+  }
+
+  #suggestion-form button {
+    padding: 12px;
   }
 }
