@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - Buldack</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./register.css" />
+  </head>
+  <body>
+    <!--Top bar section-->
+    <section class="top-bar" name="top-bar">
+      <!-- Left side with the website name -->
+      <a href="../index.html">
+        <h3 id="website-name">Buldack</h3>
+      </a>
+    </section>
+    <!-- Register Page Container -->
+    <main class="login-container">
+      <section class="login-box">
+        <h2>Create an Account</h2>
+        <form id="register-form" aria-label="register-form">
+          <!-- Username field -->
+          <div class="input-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              required
+              placeholder="Enter your username"
+              maxlength="20"
+            />
+          </div>
+
+          <!-- Password field -->
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required
+              placeholder="Enter your password"
+              minlength="6"
+            />
+          </div>
+
+          <!-- Confirm Password field -->
+          <div class="input-group">
+            <label for="confirm-password">Confirm Password</label>
+            <input
+              type="password"
+              id="confirm-password"
+              name="confirm-password"
+              required
+              placeholder="Re-enter your password"
+              minlength="6"
+            />
+          </div>
+
+          <!-- Register button -->
+          <button type="submit" class="login-btn">Register</button>
+        </form>
+
+        <p class="register-link">
+          Already have an account? <a href="../login/log-in.html">Login here</a>
+        </p>
+      </section>
+    </main>
+
+    <script type="module" src="./main-register.js"></script>
+  </body>
+</html>
