@@ -5,7 +5,7 @@ import { fetchAllAnime } from "./fetch-helpers";
 import {
   setLocalStorageKey,
   getLocalStorageKey,
-} from "./local-storage-helpers";
+} from "../../buldak/src/local-storage-helpers";
 
 // function that renders anime in array stored in local storage with top 5 rankings.
 export const renderTopFiveAnime = () => {
