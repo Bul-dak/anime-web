@@ -4,6 +4,8 @@ import {
   getLocalStorageKey,
 } from "../src/local-storage-helpers";
 
+// Import crypto-helpers
+import { hashPassword } from "./crypto-helpers";
 
 /* Create a function that takes newUser formData from register-form and verifies that password field
    matches confirm password field, if they match then proceed to hashing the password using bcrypt
@@ -31,10 +33,16 @@ export const registerNewUser = async (formData) => {
       const hashedUserPassword = await hashPassword(password);
 
       // Store new user login info in an object (Map can't be used directly in localStorage)
-      const newUserObject = { username, password: hashedUserPassword };
-
+      const newUserObject = {
+        username: username,
+        password: hashedUserPassword,
+        savedAnimes: [],
+        login: false,
+      };
       // Retrieve existing users from localStorage
-      const users = getLocalStorageKey("users") || {};
+      const users = localStorage.getItem(username)
+        ? JSON.parse(localStorage.getItem(username))
+        : {};
 
       // Add new user to the users object
       users[username] = newUserObject;

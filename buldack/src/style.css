@@ -60,6 +60,7 @@ body {
 .menu-item {
   position: relative;
   cursor: pointer;
+  margin-right: 40px;
   font-size: 1.1rem;
   font-weight: 500;
   color: #ffffff;
@@ -80,7 +81,7 @@ body {
   left: 0;
   background-color: #333333; /* Dark dropdown background */
   border-radius: 8px;
-  min-width: 200px;
+  min-width: 110px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* Darker shadow */
   overflow: hidden;
   z-index: 1000;
