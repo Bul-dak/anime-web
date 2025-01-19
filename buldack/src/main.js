@@ -7,16 +7,16 @@ import {
 } from "./local-storage-helpers";
 
 // Import fetch-helpers functions
-import { fetchAllAnimes } from "./fetch-helpers";
+import { fetchAllAnime } from "./fetch-helpers";
 
 // Import render-main functions
-import { renderTopFiveAnimes } from "./render-main";
+import { renderTopFiveAnime } from "./render-main";
 
-// store url of API from where we'll be retrieveing all animes in a variable
-const AllAnimesUrl = "https://api.jikan.moe/v4/top/anime";
+// store url of API from where we'll be retrieving all anime in a variable
+const AllAnimeUrl = "https://api.jikan.moe/v4/top/anime";
 
-// call function fetchAllAnimes, pass it allAnimesUrL and store its returned value on local storage
-fetchAllAnimes(AllAnimesUrl);
+// call function fetchAllAnime, pass it allAnimeUrL and store its returned value on local storage
+fetchAllAnime(AllAnimeUrl);
 
-// call function renderTopFiveAnimes
-renderTopFiveAnimes();
+// call function renderTopFiveAnime
+renderTopFiveAnime();

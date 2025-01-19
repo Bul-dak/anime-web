@@ -1,5 +1,5 @@
 // Import fetch-helper functions
-import { fetchAllAnimes } from "./fetch-helpers";
+import { fetchAllAnime } from "./fetch-helpers";
 
 //  Import local-storage-helper functions
 import {
@@ -7,14 +7,14 @@ import {
   getLocalStorageKey,
 } from "./local-storage-helpers";
 
-// function that renders animes in array stored in local storage with top 5 rankings.
-export const renderTopFiveAnimes = () => {
+// function that renders anime in array stored in local storage with top 5 rankings.
+export const renderTopFiveAnime = () => {
   // retrieve anime data from local storage
   const allAnimeArray = getLocalStorageKey("allAnime");
 
-  // store the div where we'll be rendering our top ranked animes in a variable
+  // store the div where we'll be rendering our top ranked anime in a variable
   const topFiveDiv = document.querySelector("#top-five-anime");
-  // Iterate through the first 5 items in array since animes in array are already stored in a rank base order.
+  // Iterate through the first 5 items in array since anime in array are already stored in a rank base order.
   for (let i = 0; i <= 5; i++) {
     // create a div and with two elements inside. (top one will be the image and second one will be the title)
     const div = document.createElement("div");
