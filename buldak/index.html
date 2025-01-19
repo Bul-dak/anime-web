@@ -1,52 +1,133 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <link rel="stylesheet" href="/src/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="src/main.js"></script>
-    <title>Vite App</title>
+    <script type="module" src="/src/main.js"></script>
+    <title>Buldak Main</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./src/style.css" />
   </head>
   <body>
-    <div id="app">
-      <nav>
-        <h1>Buldak</h1>
-        <ul>
-          <a href="#">TV Shows</a>
-          <a href="#">Movies</a>
-          <!-- <a href="detailed-veiw.html">Test Buldak</a> -->
-        </ul>
-      </nav>
-    </header>
+    <main id="app">
+      <!--Top bar section-->
+      <section class="top-bar" name="top-bar">
+        <!-- Left side with the website name -->
 
-    <script>
-      const testRoute = async (url) => {
-        const response = await fetch(url);
-        const data = await response.json();
-        console.log("data:", data);
-      };
+        <h3 id="website-name">Buldak</h3>
 
-      const url1 = "https://api.jikan.moe/v4/anime";
-      const url2 = "https://api.jikan.moe/v4/anime/807/full";
+        <!-- Right side with dropdown menus -->
 
-      testRoute(url1);
-      testRoute(url2);
-    </script>
+        <div class="menu">
+          <div class="menu-item">
+            <h4>Anime movies</h4>
+            <!--Movies Dropdown-->
+            <div class="dropdown">
+              <a href="#action-movies">Action</a>
 
-    </div>
+              <a href="#comedy-movies">Comedy</a>
+
+              <a href="#drama-movies">Drama</a>
+
+              <a href="#fantasy-movies">Fantasy</a>
+
+              <a href="#romance-movies">Romance</a>
+
+              <a href="#movie-genres">More Genres</a>
+            </div>
+          </div>
+
+          <div class="menu-item">
+            <h4>Anime series</h4>
+            <!--Series Dropdown-->
+            <div class="dropdown">
+              <a href="#action-series">Action</a>
+
+              <a href="#comedy-series">Comedy</a>
+
+              <a href="#drama-series">Drama</a>
+
+              <a href="#fantasy-series">Fantasy</a>
+
+              <a href="#romance-series">Romance</a>
+
+              <a href="series-genres">More Genres</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="top-ranked-anime" name="top-ranked-anime">
+        <!--Website Intro-->
+        <div d="website-into">
+          <p>
+            "Discover and explore new anime easily with our website! Search by
+            keyword, view detailed info on each title, get personalized
+            recommendations, and find similar anime based on your preferences."
+          </p>
+        </div>
+        <h2 class="main-titles">Most Popular Anime Today</h2>
+        <div id="top-five-anime"></div>
+      </section>
+      <section class="top-ranked-anime" name="form-section">
+        <form aria-label="get-suggestion" id="suggestion-form">
+          <h2 class="main-titles">
+            Anime Recommendation Form: Discover Your New Favorite Show
+          </h2>
+
+          <fieldset>
+            <legend>Movie or Series</legend>
+            <label>
+              <input type="text" name="anime-format" />
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Choose Your Preferred Genre</legend>
+            <label>
+              <input type="radio" name="genre" value="action" /> Action
+            </label>
+            <label>
+              <input type="radio" name="genre" value="comedy" /> Comedy
+            </label>
+            <label>
+              <input type="radio" name="genre" value="drama" /> Drama
+            </label>
+            <label>
+              <input type="radio" name="genre" value="romance" /> Romance
+            </label>
+            <label>
+              <input type="radio" name="genre" value="fantasy" /> Fantasy
+            </label>
+            <label>
+              <input type="radio" name="genre" value="sci-fi" /> Sci-Fi
+            </label>
+            <label>
+              <input type="radio" name="genre" value="slice-of-life" />Slice of
+              Life
+            </label>
+            <label>
+              <input type="radio" name="genre" value="sports" /> Sports
+            </label>
+          </fieldset>
+
+          <button type="submit">Submit</button>
+          <button id="random-button">Random</button>
+        </form>
+      </section>
+      <section id="render-zone">
+        <!-- This will contain the anime recommended by the form -->
+      </section>
+    </main>
 
     <!-- Detailed view modal for each anime TODO: needs to have every anime picture as a button, so on click (as in clicking the image) it 
      will open up this modal-->
     <dialog id="detailed-view">
       <!-- This where I'll use dom manipulation to insert the details about an anime vs using another page -->
-      <div id="synopsis"></div>
-
-      <button id="close-modal">Close</button>
     </dialog>
-
-    <button id="test-modal">Test Modal</button>
-
     <footer>
       <p>@Buldak; 2023 Buldak: Anime</p>
     </footer>

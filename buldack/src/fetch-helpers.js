@@ -2,7 +2,7 @@
 import {
   setLocalStorageKey,
   getLocalStorageKey,
-} from "./local-storage-helpers";
+} from "../../buldak/src/local-storage-helpers";
 
 // API Details:
 /* Rate Limiting

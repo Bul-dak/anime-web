@@ -1,8 +1,15 @@
+import { getLocalStorageKey } from "./local-storage-helpers";
+import {
+  handleDetailsClose,
+  handleDetailsOpen,
+  handleSave,
+} from "./dom-helpers";
+
 export const renderAnimeDetails = (animeObj) => {
   const dialog = document.getElementById("detailed-view");
 
   const img = document.createElement("img");
-  img.setAttribute("src", animeObj.largeImageUrl);
+  img.setAttribute("src", animeObj.imageUrl);
   img.setAttribute("alt", `Picture of ${animeObj.title}`);
 
   const title = document.createElement("h3");
@@ -28,12 +35,6 @@ export const renderAnimeDetails = (animeObj) => {
     episodes.setAttribute("id", "episodes");
     dialog.append(episodes);
   }
-  if (animeObj.season) {
-    const season = document.createElement("p");
-    season.textContent = `Season: ${animeObj.season}`;
-    season.setAttribute("id", "season");
-    dialog.append(season);
-  }
   if (animeObj.studio) {
     const studio = document.createElement("p");
     studio.textContent = `Studio: ${animeObj.studio}`;
@@ -46,17 +47,6 @@ export const renderAnimeDetails = (animeObj) => {
     rank.setAttribute("id", "rank");
     dialog.append(rank);
   }
-  if (animeObj.popularity) {
-    const popularity = document.createElement("p");
-    popularity.textContent = `Popularity: ${animeObj.popularity}`;
-    popularity.setAttribute("id", "popularity");
-    dialog.append(popularity);
-  }
-  if (animeObj.year) {
-    const year = document.createElement("p");
-    year.textContent = `Year: ${animeObj.year}`;
-    dialog.append(year);
-  }
   if (animeObj.aired) {
     const aired = document.createElement("p");
     aired.textContent = `Aired: ${animeObj.aired}`;
@@ -67,18 +57,39 @@ export const renderAnimeDetails = (animeObj) => {
     const synopsis = document.createElement("p");
     synopsis.textContent = `Synopsis: ${animeObj.synopsis}`;
     synopsis.setAttribute("id", "synopsis");
-    dialog.append(synopsis);
+    const divSynopsis = document.createElement("div");
+    divSynopsis.setAttribute("id", "synopsis");
+    divSynopsis.append(synopsis);
+    dialog.append(divSynopsis);
   }
   if (animeObj.trailer) {
-    const trailer = document.createElement("video");
-    trailer.textContent = `Trailer: ${animeObj.trailer}`;
-    trailer.setAttribute("width", 320);
-    trailer.setAttribute("height", 240);
-    const vidSource = document.createElement("source");
-    vidSource.setAttribute("src", `${trailer}`);
-    trailer.append(vidSource);
+    const trailer = document.createElement("div");
+    console.log(animeObj.trailer);
+    trailer.innerHTML = `
+      <iframe
+        width="320"
+        height="240"
+        src=${animeObj.trailer}
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    `;
     dialog.append(trailer);
   }
+
+  const saveButton = document.createElement("button");
+  saveButton.setAttribute("id", "save-anime");
+  saveButton.addEventListener("click", handleSave);
+  saveButton.textContent = "Save to Watch List";
+
+  const closeButton = document.createElement("button");
+  closeButton.setAttribute("id", "close-modal");
+  closeButton.addEventListener("click", handleDetailsClose);
+  closeButton.textContent = "Close";
+
+  dialog.append(saveButton, closeButton);
 };
 
 // function that renders anime in array stored in local storage with top 5 rankings.
@@ -95,7 +106,10 @@ export const renderTopFiveAnime = () => {
     div.classList = "anime-card";
 
     const img = document.createElement("img");
+    img.setAttribute("class", "anime-img");
     img.src = allAnimeArray[i].image;
+    img.setAttribute("data-id", allAnimeArray[i].id);
+    img.addEventListener("click", handleDetailsOpen);
 
     const title = document.createElement("h3");
     title.classList = "anime-title";
@@ -108,4 +122,20 @@ export const renderTopFiveAnime = () => {
     // append div to topFiveDiv
     topFiveDiv.append(div);
   }
+};
+
+export const renderRecommendedAnime = (animeObj) => {
+  const renderZone = document.getElementById("render-zone");
+
+  const img = document.createElement("img");
+  img.setAttribute("src", animeObj.image);
+  img.setAttribute("alt", `Picture of ${animeObj.title}`);
+  img.setAttribute("data-id", animeObj.id);
+  img.addEventListener("click", handleDetailsOpen);
+
+  const title = document.createElement("h3");
+  title.textContent = animeObj.title;
+  title.setAttribute("id", "main-title");
+
+  renderZone.append(img, title);
 };

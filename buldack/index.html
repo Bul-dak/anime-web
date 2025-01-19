@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="/src/main.js"></script>
     <title>Buldak Main</title>
 
     <link
@@ -121,6 +122,20 @@
         </form>
       </section>
     </main>
-    <script type="module" src="/src/main.js"></script>
+
+    <!-- Detailed view modal for each anime TODO: needs to have every anime picture as a button, so on click (as in clicking the image) it 
+     will open up this modal-->
+    <dialog id="detailed-view">
+      <!-- This where I'll use dom manipulation to insert the details about an anime vs using another page -->
+      <div id="synopsis"></div>
+
+      <button id="close-modal">Close</button>
+    </dialog>
+
+    <button id="test-modal">Test Modal</button>
+
+    <footer>
+      <p>@Buldak; 2023 Buldak: Anime</p>
+    </footer>
   </body>
 </html>
