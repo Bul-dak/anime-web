@@ -10,8 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
       rel="stylesheet"
     />
-
-    <link rel="stylesheet" href="src/style.css" />
+    <link rel="stylesheet" href="./src/style.css" />
   </head>
   <body>
     <main id="app">
@@ -25,7 +24,7 @@
 
         <div class="menu">
           <div class="menu-item">
-            <h4>Movies</h4>
+            <h4>Anime movies</h4>
             <!--Movies Dropdown-->
             <div class="dropdown">
               <a href="#action-movies">Action</a>
@@ -43,7 +42,7 @@
           </div>
 
           <div class="menu-item">
-            <h4>Series</h4>
+            <h4>Anime series</h4>
             <!--Series Dropdown-->
             <div class="dropdown">
               <a href="#action-series">Action</a>
@@ -59,10 +58,6 @@
               <a href="series-genres">More Genres</a>
             </div>
           </div>
-        </div>
-        <!--Login button-->
-        <div class="login-button">
-          <a href="../login/login.html">Log In</a>
         </div>
       </section>
       <section class="top-ranked-anime" name="top-ranked-anime">
@@ -80,16 +75,13 @@
       <section class="top-ranked-anime" name="form-section">
         <form aria-label="get-suggestion" id="suggestion-form">
           <h2 class="main-titles">
-            Anime Recommendation Finder: Tailor Your Perfect Show
+            Anime Recommendation Form: Discover Your New Favorite Show
           </h2>
 
           <fieldset>
             <legend>Movie or Series</legend>
             <label>
-              <input type="radio" name="anime-format" value="Movie" /> Movie
-            </label>
-            <label>
-              <input type="radio" name="anime-format" value="Series" /> Series
+              <input type="text" name="anime-format" />
             </label>
           </fieldset>
 
@@ -123,7 +115,11 @@
           </fieldset>
 
           <button type="submit">Submit</button>
+          <button id="random-button">Random</button>
         </form>
+      </section>
+      <section id="render-zone">
+        <!-- This will contain the anime recommended by the form -->
       </section>
     </main>
 
@@ -131,13 +127,7 @@
      will open up this modal-->
     <dialog id="detailed-view">
       <!-- This where I'll use dom manipulation to insert the details about an anime vs using another page -->
-      <div id="synopsis"></div>
-
-      <button id="close-modal">Close</button>
     </dialog>
-
-    <button id="test-modal">Test Modal</button>
-
     <footer>
       <p>@Buldak; 2023 Buldak: Anime</p>
     </footer>

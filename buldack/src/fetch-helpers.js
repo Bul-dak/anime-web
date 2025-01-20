@@ -2,7 +2,7 @@
 import {
   setLocalStorageKey,
   getLocalStorageKey,
-} from "./local-storage-helpers";
+} from "../../buldak/src/local-storage-helpers";
 
 // API Details:
 /* Rate Limiting
@@ -12,14 +12,14 @@ Per Minute	60 requests
 Per Second	3 requests
 */
 
-/* Create a function that fetches ALL THE ANIMES(movies and series) from the first page*/
+/* Create a function that fetches ALL THE ANIME(movies and series) from the first page*/
 
-export const fetchAllAnimes = async (url) => {
+export const fetchAllAnime = async (url) => {
   try {
     const response = await fetch(url);
 
     // Throw an error if the response was not ok - let the catch statement handle it
-    if (!response.ok) throw new Error("Failed to fetch ALL THE ANIMES!!");
+    if (!response.ok) throw new Error("Failed to fetch ALL THE ANIME!!");
     // Throw an error if there was a fetch error
     if (response === null) return response;
 
