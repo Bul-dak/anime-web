@@ -6,6 +6,8 @@ import {
 } from "./dom-helpers";
 
 export const renderAnimeDetails = (animeObj) => {
+  console.log("Render Anime Details object check: ", animeObj);
+
   const dialog = document.getElementById("detailed-view");
 
   const img = document.createElement("img");
@@ -28,6 +30,12 @@ export const renderAnimeDetails = (animeObj) => {
     type.textContent = `Type: ${animeObj.type}`;
     type.setAttribute("id", "type");
     dialog.append(type);
+  }
+  if (animeObj.genres) {
+    const genres = document.createElement("p");
+    genres.textContent = `Genres: ${animeObj.genres}`;
+    genres.setAttribute("id", "genres");
+    dialog.append(genres);
   }
   if (animeObj.episodes) {
     const episodes = document.createElement("p");
@@ -126,16 +134,76 @@ export const renderTopFiveAnime = () => {
 
 export const renderRecommendedAnime = (animeObj) => {
   const renderZone = document.getElementById("render-zone");
+  try {
+    const img = document.createElement("img");
+    img.setAttribute("src", animeObj.image);
+    img.setAttribute("alt", `Picture of ${animeObj.title}`);
+    img.setAttribute("data-id", animeObj.id);
+    img.addEventListener("click", handleDetailsOpen);
 
-  const img = document.createElement("img");
-  img.setAttribute("src", animeObj.image);
-  img.setAttribute("alt", `Picture of ${animeObj.title}`);
-  img.setAttribute("data-id", animeObj.id);
-  img.addEventListener("click", handleDetailsOpen);
+    const title = document.createElement("h3");
+    title.textContent = animeObj.title;
+    title.setAttribute("id", "main-title");
 
-  const title = document.createElement("h3");
-  title.textContent = animeObj.title;
-  title.setAttribute("id", "main-title");
+    renderZone.append(img, title);
+  } catch (error) {
+    console.error(error.message);
+    const p = document.createElement("p");
+    p.textContent = "No Valid Search";
+    renderZone.append(p);
+  }
+};
 
-  renderZone.append(img, title);
+/* Develop logic for un-rendering log in button in index.html after user logs in and 
+   instead replace login button for username dropdown menu with the
+   following two options (watchlist and logout) */
+
+export const renderUsername = (user) => {
+  // Ensure the user object has the username field
+  if (!user || !user.username) {
+    console.error("User object or username is missing");
+    return;
+  }
+
+  // grab log in div element from top bar and clear its inner html
+  const loginDiv = document.querySelector(".login-button");
+  loginDiv.classList.remove("login-button");
+  loginDiv.innerHTML = "";
+
+  // reading the class of loginDiv to .menu-item for styling reasons
+  loginDiv.classList = "menu-item";
+
+  // create a h4 element with the user.username as it's text content
+  const h4 = document.createElement("h4");
+  h4.textContent = `${user.username}`;
+  loginDiv.append(h4);
+
+  // create another div element and assign it the class .dropdown for styling reasons
+  const dropdownDiv = document.createElement("div");
+  dropdownDiv.classList = "dropdown";
+
+  // create anchor tag for watchlist
+  const anchor1 = document.createElement("a");
+  anchor1.href = "/watchlist/watchlist.html";
+  anchor1.textContent = "watchlist";
+
+  // create anchor tag for logout
+  const anchor2 = document.createElement("a");
+  anchor2.textContent = "logout";
+
+  // add an event listener to log out that removes activeUser from local storage and reloads the page.
+  anchor2.addEventListener("click", (event) => {
+    event.preventDefault();
+    // remove activeUser from local storage
+    localStorage.removeItem("activeUser");
+    // reload page to go back to default rendering settings
+    location.reload();
+  });
+
+  // append anchors to dropdownDiv
+  dropdownDiv.append(anchor1);
+  dropdownDiv.append(anchor2);
+
+  // append dropdowndiv to loginDiv
+  loginDiv.append(dropdownDiv);
 };

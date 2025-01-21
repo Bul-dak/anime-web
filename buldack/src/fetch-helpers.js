@@ -1,8 +1,5 @@
 // Import localStorage helpers
-import {
-  setLocalStorageKey,
-  getLocalStorageKey,
-} from "../../buldak/src/local-storage-helpers";
+import { setLocalStorageKey } from "../../buldak/src/local-storage-helpers";
 
 // API Details:
 /* Rate Limiting

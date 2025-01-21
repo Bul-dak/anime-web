@@ -14,12 +14,12 @@ export const getLocalStorageKey = (key) => {
 
 // These functions are to be used with saving the anime to a users profile
 
-export const setSavedAnime = () => {
+export const getUsers = () => {
   // for when a new user is added
-  setLocalStorageKey("savedAnime", []);
+  getLocalStorageKey("users");
 };
 
-export const addSavedAnime = (animeToBeSaved) => {
+export const setSavedAnime = (animeToBeSaved) => {
   try {
     console.log(" Anime to be saved: ", animeToBeSaved);
     const storedAnime = getLocalStorageKey("savedAnime");

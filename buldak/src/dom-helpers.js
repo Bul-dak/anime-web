@@ -4,7 +4,12 @@ import {
   setLocalStorageKey,
   setRecommendedAnime,
 } from "./local-storage-helpers";
-import { getRandomAnime } from "./getValidAnime";
+import {
+  getAnimeByGenre,
+  getAnimeByType,
+  getPerfectAnime,
+  getRandomAnime,
+} from "./getValidAnime";
 
 export const handleDetailsOpen = async (event) => {
   const img = event.target;
@@ -37,10 +42,43 @@ export const handleSubmitRecommendation = async (event) => {
   // I need to get all the anime that fit with the type, i.e movie: [all anime that are movies]
   // As well as the basic random anime (1st priority)
 
+  try {
+    if (type != "" && genre) {
+      const renderZone = document.getElementById("render-zone");
+      renderZone.innerHTML = "";
+      const randomAnime = await getPerfectAnime(type, genre);
+      console.log(randomAnime);
+      renderRecommendedAnime(randomAnime);
+    } else if (type != "") {
+      const renderZone = document.getElementById("render-zone");
+      renderZone.innerHTML = "";
+      const randomAnime = await getAnimeByType(type);
+      console.log(randomAnime);
+      renderRecommendedAnime(randomAnime);
+    } else if (genre) {
+      const renderZone = document.getElementById("render-zone");
+      renderZone.innerHTML = "";
+      const randomAnime = await getAnimeByGenre(genre);
+      console.log(randomAnime);
+      renderRecommendedAnime(randomAnime);
+    }
+  } catch (error) {
+    console.error(error.message);
+    const renderZone = document.getElementById("render-zone");
+    renderZone.innerHTML = "";
+
+    const p = document.createElement("p");
+    p.textContent =
+      'Invalid Search or search parameters empty, choose "Random"';
+
+    renderZone.append(p);
+  }
   form.reset();
 };
 
-export const handleSave = async (event) => {};
+export const handleSave = async (event) => {
+  const saveButton = event.target;
+};
 
 export const handleRandomButton = async () => {
   const renderZone = document.getElementById("render-zone");
