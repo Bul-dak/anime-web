@@ -88,11 +88,6 @@ export const fetchAllAnime = async (url) => {
     return null;
   }
 };
-/ Import localStorage helpers
-import {
-  setLocalStorageKey,
-  getLocalStorageKey,
-} from "./local-storage-helpers";
 
 // API Details:
 /* Rate Limiting
