@@ -3,14 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="/src/main.js"></script>
-    <title>Buldak Main</title>
-
+    <title>Buldack Main</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
       rel="stylesheet"
     />
-
     <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
@@ -18,45 +15,79 @@
       <!--Top bar section-->
       <section class="top-bar" name="top-bar">
         <!-- Left side with the website name -->
-
-        <h3 id="website-name">Buldak</h3>
-
+        <h3 id="website-name">Buldack</h3>
         <!-- Right side with dropdown menus -->
-
         <div class="menu">
           <div class="menu-item">
             <h4>Movies</h4>
             <!--Movies Dropdown-->
             <div class="dropdown">
-              <a href="#action-movies">Action</a>
-
-              <a href="#comedy-movies">Comedy</a>
-
-              <a href="#drama-movies">Drama</a>
-
-              <a href="#fantasy-movies">Fantasy</a>
-
-              <a href="#romance-movies">Romance</a>
-
-              <a href="#movie-genres">More Genres</a>
+              <a
+                href="genre-list/genre.html"
+                data-genre="Action"
+                data-type="Movie"
+                >Action</a
+              >
+              <a
+                href="genre-list/genre.html"
+                data-genre="Comedy"
+                data-type="Movie"
+                >Comedy</a
+              >
+              <a
+                href="genre-list/genre.html"
+                data-genre="Drama"
+                data-type="Movie"
+                >Drama</a
+              >
+              <a
+                href="genre-list/genre.html"
+                data-genre="Fantasy"
+                data-type="Movie"
+                >Fantasy</a
+              >
+              <a
+                href="genre-list/genre.html"
+                data-genre="Romance"
+                data-type="Movie"
+                >Romance</a
+              >
+              <a
+                href="genre-list/genre.html"
+                data-genre="Sports"
+                data-type="Movie"
+                >Sports</a
+              >
             </div>
           </div>
-
           <div class="menu-item">
             <h4>Series</h4>
             <!--Series Dropdown-->
             <div class="dropdown">
-              <a href="#action-series">Action</a>
-
-              <a href="#comedy-series">Comedy</a>
-
-              <a href="#drama-series">Drama</a>
-
-              <a href="#fantasy-series">Fantasy</a>
-
-              <a href="#romance-series">Romance</a>
-
-              <a href="series-genres">More Genres</a>
+              <a href="genre-list/genre.html" data-genre="Action" data-type="TV"
+                >Action</a
+              >
+              <a href="genre-list/genre.html" data-genre="Comedy" data-type="TV"
+                >Comedy</a
+              >
+              <a href="genre-list/genre.html" data-genre="Drama" data-type="TV"
+                >Drama</a
+              >
+              <a
+                href="genre-list/genre.html"
+                data-genre="Fantasy"
+                data-type="TV"
+                >Fantasy</a
+              >
+              <a
+                href="genre-list/genre.html"
+                data-genre="Romance"
+                data-type="TV"
+                >Romance</a
+              >
+              <a href="genre-list/genre.html" data-genre="Sports" data-type="TV"
+                >Sports</a
+              >
             </div>
           </div>
         </div>
@@ -80,63 +111,55 @@
       <section class="top-ranked-anime" name="form-section">
         <form aria-label="get-suggestion" id="suggestion-form">
           <h2 class="main-titles">
-            Anime Recommendation Form: Find Your Perfect Anime
+            Anime Recommendation Finder: Tailor Your Perfect Show
           </h2>
-
           <fieldset>
             <legend>Movie or Series</legend>
             <label>
-              <input type="text" name="type" />
+              <input type="radio" name="anime-format" value="Movie" /> Movie
+            </label>
+            <label>
+              <input type="radio" name="anime-format" value="Series" /> Series
             </label>
           </fieldset>
-
           <fieldset>
             <legend>Choose Your Preferred Genre</legend>
             <label>
-              <input type="radio" name="genre" value="Action" /> Action
+              <input type="radio" name="genre" value="action" /> Action
             </label>
             <label>
-              <input type="radio" name="genre" value="Comedy" /> Comedy
+              <input type="radio" name="genre" value="comedy" /> Comedy
             </label>
             <label>
-              <input type="radio" name="genre" value="Drama" /> Drama
+              <input type="radio" name="genre" value="drama" /> Drama
             </label>
             <label>
-              <input type="radio" name="genre" value="Romance" /> Romance
+              <input type="radio" name="genre" value="romance" /> Romance
             </label>
             <label>
-              <input type="radio" name="genre" value="Fantasy" /> Fantasy
+              <input type="radio" name="genre" value="fantasy" /> Fantasy
             </label>
             <label>
-              <input type="radio" name="genre" value="Sci-Fi" /> Sci-Fi
+              <input type="radio" name="genre" value="sci-fi" /> Sci-Fi
             </label>
             <label>
-              <input type="radio" name="genre" value="Slice of Life" />Slice of
+              <input type="radio" name="genre" value="slice-of-life" />Slice of
               Life
             </label>
             <label>
-              <input type="radio" name="genre" value="Sports" /> Sports
+              <input type="radio" name="genre" value="sports" /> Sports
             </label>
           </fieldset>
-
           <button type="submit">Submit</button>
-          <button id="random-button">Random</button>
         </form>
       </section>
-
-      <section id="render-zone"></section>
     </main>
-
-    <!-- Detailed view modal for each anime TODO: needs to have every anime picture as a button, so on click (as in clicking the image) it 
-     will open up this modal-->
-    <dialog id="detailed-view">
-      <!-- This where I'll use dom manipulation to insert the details about an anime vs using another page -->
-      <div id="synopsis"></div>
-
-      <button id="close-modal">Close</button>
-    </dialog>
-    <footer>
-      <p>@Buldak; 2023 Buldak: Anime</p>
-    </footer>
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>
+
+
+
+
+
+

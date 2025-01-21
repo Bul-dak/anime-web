@@ -1,0 +1,292 @@
+/* General styling for dark mode */
+body {
+  margin: 0;
+  font-family: "Quicksand", Arial, sans-serif;
+  background-color: #121212; /* Dark background */
+  color: #e0e0e0; /* Light gray text for readability */
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Top bar styling for dark mode */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(145deg, #333333, #1c1c1c); /* Dark gradient */
+  color: #ffffff;
+  padding: 10px 40px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5); /* Deeper shadow */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 2px solid #444444; /* Darker border */
+  transition: background-color 0.3s ease;
+}
+
+/* Website name styling */
+#website-name {
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: #ffffff;
+  margin: 0;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.9),
+    0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.7);
+}
+
+/* Gradient background effect for the website name */
+#website-name {
+  background: linear-gradient(to right, #ff5f6d, #ffc3a0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  text-shadow: none;
+}
+
+#website-name:hover {
+  cursor: pointer;
+}
+
+/* Menu container on the right */
+.menu {
+  display: flex;
+  gap: 30px;
+}
+
+/* Menu item styling */
+.menu-item {
+  position: relative;
+  cursor: pointer;
+  margin-right: 40px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #ffffff;
+  transition: color 0.3s ease, transform 0.3s ease;
+  text-transform: capitalize;
+}
+
+.menu-item:hover {
+  color: #ff7043; /* Coral on hover */
+  transform: scale(1.1);
+}
+
+/* Dropdown menu for dark mode */
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #333333; /* Dark dropdown background */
+  border-radius: 8px;
+  min-width: 110px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* Darker shadow */
+  overflow: hidden;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+/* Links inside the dropdown */
+.dropdown a {
+  display: block;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: #e0e0e0; /* Light gray for readability */
+  font-size: 0.9rem;
+  font-weight: 400;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    padding-left 0.2s ease;
+}
+
+/* Hover effect on dropdown links */
+.dropdown a:hover {
+  background-color: #ff7043; /* Warm coral background on hover */
+  color: #ffffff;
+  padding-left: 25px;
+}
+
+/* Show dropdown on hover with fade-in effect */
+.menu-item:hover .dropdown {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease, visibility 0s linear 0s;
+}
+
+/* Login Button Styling */
+.login-button {
+  display: inline-block;
+  margin-left: 20px;
+  background-color: #ff7f50; /* Coral background, consistent with button theme */
+  color: #ffffff;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-decoration: none; /* Remove underline from link */
+}
+
+.login-button a {
+  color: white; /* Ensure the link text is white */
+  text-decoration: none; /* Remove underline from the link */
+}
+
+.login-button:hover {
+  background-color: #ff7043; /* Darker coral on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Focus State for Accessibility */
+.login-button:focus {
+  outline: 3px solid #ff7043; /* Focus outline with the same color */
+}
+
+/* Pagination buttons section */
+.pagination-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  background-color: #1f1f1f; /* Dark background for the pagination section */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* Shadow */
+  margin-top: 20px;
+  position: sticky;
+  top: 70px; /* Ensure it stays below the top bar */
+  z-index: 999;
+}
+
+/* Pagination buttons styling */
+.pagination-button-previous,
+.pagination-button-next {
+  background-color: #ff7f50; /* Coral background */
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.pagination-button-previous:hover,
+.pagination-button-next:hover {
+  background-color: #ff7043; /* Darker coral on hover */
+  transform: scale(1.05);
+}
+
+.pagination-info {
+  font-size: 1rem;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* Section styling for Featured Anime */
+.grid-section {
+  padding: 40px 20px;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  background: #1f1f1f; /* Dark background */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.main-titles {
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #e0e0e0;
+  margin-top: 80px;
+  padding: 0;
+}
+
+/* Anime grid styling */
+.anime-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  color: #ffffff;
+  background: #2c2c2c;
+}
+
+/* Anime card styling */
+.anime-card {
+  background-color: #333333; /* Darker card background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.anime-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.anime-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Anime title text */
+.anime-card .anime-title {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.anime-card:hover .anime-title {
+  background: rgba(0, 0, 0, 0.7); /* Darker background on hover */
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .anime-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .anime-card .anime-title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .anime-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .anime-card .anime-title {
+    font-size: 1rem;
+  }
+}
