@@ -9,13 +9,14 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="src/style.css" />
+    <script type="module" src="/src/main.js"></script>
   </head>
   <body>
     <main id="app">
       <!--Top bar section-->
       <section class="top-bar" name="top-bar">
         <!-- Left side with the website name -->
-        <h3 id="website-name">Buldack</h3>
+        <h3 id="website-name">Buldak</h3>
         <!-- Right side with dropdown menus -->
         <div class="menu">
           <div class="menu-item">
@@ -114,52 +115,46 @@
             Anime Recommendation Finder: Tailor Your Perfect Show
           </h2>
           <fieldset>
-            <legend>Movie or Series</legend>
-            <label>
-              <input type="radio" name="anime-format" value="Movie" /> Movie
-            </label>
-            <label>
-              <input type="radio" name="anime-format" value="Series" /> Series
-            </label>
+            <legend>Movie or TV</legend>
+            <input type="text" name="type" id="type" />
           </fieldset>
           <fieldset>
             <legend>Choose Your Preferred Genre</legend>
             <label>
-              <input type="radio" name="genre" value="action" /> Action
+              <input type="radio" name="genre" value="Action" /> Action
             </label>
             <label>
-              <input type="radio" name="genre" value="comedy" /> Comedy
+              <input type="radio" name="genre" value="Comedy" /> Comedy
             </label>
             <label>
-              <input type="radio" name="genre" value="drama" /> Drama
+              <input type="radio" name="genre" value="Drama" /> Drama
             </label>
             <label>
-              <input type="radio" name="genre" value="romance" /> Romance
+              <input type="radio" name="genre" value="Romance" /> Romance
             </label>
             <label>
-              <input type="radio" name="genre" value="fantasy" /> Fantasy
+              <input type="radio" name="genre" value="Fantasy" /> Fantasy
             </label>
             <label>
-              <input type="radio" name="genre" value="sci-fi" /> Sci-Fi
+              <input type="radio" name="genre" value="Sci-Fi" /> Sci-Fi
             </label>
             <label>
-              <input type="radio" name="genre" value="slice-of-life" />Slice of
+              <input type="radio" name="genre" value="Slice of Life" />Slice of
               Life
             </label>
             <label>
-              <input type="radio" name="genre" value="sports" /> Sports
+              <input type="radio" name="genre" value="Sports" /> Sports
             </label>
           </fieldset>
           <button type="submit">Submit</button>
+          <button id="random-button">Random</button>
         </form>
       </section>
+      <dialog id="detailed-view"></dialog>
+      <section id="render-zone"></section>
     </main>
-    <script type="module" src="/src/main.js"></script>
+    <footer>
+      <p>@Buldak: I.F Corp</p>
+    </footer>
   </body>
 </html>
-
-
-
-
-
-
