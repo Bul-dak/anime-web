@@ -175,3 +175,5 @@ export const getPerfectAnime = async (type, genre) => {
   console.log("anime by perfect result: ", randomAnime);
   return randomAnime;
 };
+
+// testing push should appear
