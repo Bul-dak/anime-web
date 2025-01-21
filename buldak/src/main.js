@@ -41,10 +41,15 @@ import {
 } from "./local-storage-helpers";
 
 // Import fetch-helpers functions
-import { fetchAllAnimes } from "./fetch-helpers";
+import { fetchAllAnime, fetchData, getAnimeById } from "./fetch-functions";
 
 // Import render-main functions
-import { renderTopFiveAnimes, renderUserContent } from "./render-main";
+import {
+  renderTopFiveAnime,
+  renderUserContent,
+  renderAnimeDetails,
+  renderRecommendedAnime,
+} from "./render-functions";
 
 // Import getActiveUser from login-main.js
 import { getActiveUser } from "../login/main-login";
@@ -53,10 +58,10 @@ import { getActiveUser } from "../login/main-login";
 const AllAnimesUrl = "https://api.jikan.moe/v4/top/anime";
 
 // call function fetchAllAnimes, pass it allAnimesUrL and store its returned value on local storage
-fetchAllAnimes(AllAnimesUrl);
+fetchAllAnime(AllAnimesUrl);
 
 // call function renderTopFiveAnimes
-renderTopFiveAnimes();
+renderTopFiveAnime();
 
 // Wait for the DOM to be fully loaded
 renderUserContent();

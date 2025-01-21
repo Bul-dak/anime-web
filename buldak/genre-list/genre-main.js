@@ -1,7 +1,7 @@
 import "./genre.css";
 
 // import renderUserContent from src
-import { renderUserContent } from "../src/render-main";
+import { renderUserContent } from "../src/render-functions";
 
 // Import genre-helpers and genre-fetch-helpers functions
 import { renderGenderList, genreListPageScroller } from "./genre-helpers";

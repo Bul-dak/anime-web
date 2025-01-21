@@ -207,3 +207,19 @@ export const renderUsername = (user) => {
   // append dropdowndiv to loginDiv
   loginDiv.append(dropdownDiv);
 };
+
+// Wait for the DOM to be fully loaded
+
+export const renderUserContent = () => {
+  // if user is logged in while on buldack this should re-render the main page accordingly
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const activeUser = JSON.parse(localStorage.getItem("activeUser"));
+
+    if (activeUser && activeUser.username) {
+      renderUsername(activeUser);
+    } else {
+      console.log("No active user or user is not logged in");
+    }
+  });
+};
