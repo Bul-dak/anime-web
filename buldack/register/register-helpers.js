@@ -51,6 +51,8 @@ export const registerNewUser = async (formData) => {
       setLocalStorageKey("users", users);
 
       alert("Registration successful!");
+      // redirect user to log-in page
+      window.location.href = "../login/login.html";
     } catch (error) {
       console.error("Error hashing password: ", error);
       alert("There was an error during registration. Please try again.");
