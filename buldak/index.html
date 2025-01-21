@@ -10,7 +10,8 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./src/style.css" />
+
+    <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
     <main id="app">
@@ -24,7 +25,7 @@
 
         <div class="menu">
           <div class="menu-item">
-            <h4>Anime movies</h4>
+            <h4>Movies</h4>
             <!--Movies Dropdown-->
             <div class="dropdown">
               <a href="#action-movies">Action</a>
@@ -42,7 +43,7 @@
           </div>
 
           <div class="menu-item">
-            <h4>Anime series</h4>
+            <h4>Series</h4>
             <!--Series Dropdown-->
             <div class="dropdown">
               <a href="#action-series">Action</a>
@@ -58,6 +59,10 @@
               <a href="series-genres">More Genres</a>
             </div>
           </div>
+        </div>
+        <!--Login button-->
+        <div class="login-button">
+          <a href="../login/login.html">Log In</a>
         </div>
       </section>
       <section class="top-ranked-anime" name="top-ranked-anime">
@@ -75,42 +80,42 @@
       <section class="top-ranked-anime" name="form-section">
         <form aria-label="get-suggestion" id="suggestion-form">
           <h2 class="main-titles">
-            Anime Recommendation Form: Discover Your New Favorite Show
+            Anime Recommendation Form: Find Your Perfect Anime
           </h2>
 
           <fieldset>
             <legend>Movie or Series</legend>
             <label>
-              <input type="text" name="anime-format" />
+              <input type="text" name="type" />
             </label>
           </fieldset>
 
           <fieldset>
             <legend>Choose Your Preferred Genre</legend>
             <label>
-              <input type="radio" name="genre" value="action" /> Action
+              <input type="radio" name="genre" value="Action" /> Action
             </label>
             <label>
-              <input type="radio" name="genre" value="comedy" /> Comedy
+              <input type="radio" name="genre" value="Comedy" /> Comedy
             </label>
             <label>
-              <input type="radio" name="genre" value="drama" /> Drama
+              <input type="radio" name="genre" value="Drama" /> Drama
             </label>
             <label>
-              <input type="radio" name="genre" value="romance" /> Romance
+              <input type="radio" name="genre" value="Romance" /> Romance
             </label>
             <label>
-              <input type="radio" name="genre" value="fantasy" /> Fantasy
+              <input type="radio" name="genre" value="Fantasy" /> Fantasy
             </label>
             <label>
-              <input type="radio" name="genre" value="sci-fi" /> Sci-Fi
+              <input type="radio" name="genre" value="Sci-Fi" /> Sci-Fi
             </label>
             <label>
-              <input type="radio" name="genre" value="slice-of-life" />Slice of
+              <input type="radio" name="genre" value="Slice of Life" />Slice of
               Life
             </label>
             <label>
-              <input type="radio" name="genre" value="sports" /> Sports
+              <input type="radio" name="genre" value="Sports" /> Sports
             </label>
           </fieldset>
 
@@ -118,15 +123,17 @@
           <button id="random-button">Random</button>
         </form>
       </section>
-      <section id="render-zone">
-        <!-- This will contain the anime recommended by the form -->
-      </section>
+
+      <section id="render-zone"></section>
     </main>
 
     <!-- Detailed view modal for each anime TODO: needs to have every anime picture as a button, so on click (as in clicking the image) it 
      will open up this modal-->
     <dialog id="detailed-view">
       <!-- This where I'll use dom manipulation to insert the details about an anime vs using another page -->
+      <div id="synopsis"></div>
+
+      <button id="close-modal">Close</button>
     </dialog>
     <footer>
       <p>@Buldak; 2023 Buldak: Anime</p>

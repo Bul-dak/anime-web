@@ -69,13 +69,111 @@ export const getAnimeByType = async (type) => {
     }
   });
 
-  const validAnime = [];
+  const validAnimeArray = [];
 
   allAnimeArray.forEach((anime) => {
     if (anime.type == type) {
-      validAnime.push(anime);
+      validAnimeArray.push(anime);
     }
   });
+
+  const randomAnime =
+    validAnimeArray[Math.floor(Math.random() * validAnimeArray.length)];
+  console.log("anime by type result: ", randomAnime);
+  return randomAnime;
 };
 
-export const getAnimeByGenre = async () => {};
+export const getAnimeByGenre = async (genre) => {
+  const data = await fetchData(AllAnimeUrl);
+  console.log(data);
+
+  const allAnimeArray = [];
+  data.data.forEach((anime) => {
+    const getGenres = () => {
+      let genres = [];
+      anime.genres.forEach((genre) => {
+        genres.push(genre.name);
+      });
+      return genres;
+    };
+    if (anime.type === "TV" || anime.movie === "Movie") {
+      allAnimeArray.push({
+        id: anime.mal_id,
+        title: anime.title,
+        image: anime.images.jpg.image_url,
+        type: anime.type,
+        popularity: anime.rank,
+        genres: getGenres(),
+      });
+    }
+  });
+
+  console.log("Genre test allAnime: ", allAnimeArray);
+
+  const validAnimeArray = [];
+
+  allAnimeArray.forEach((anime) => {
+    if (anime.genres.includes(genre)) {
+      validAnimeArray.push(anime);
+    }
+  });
+
+  const randomAnime =
+    validAnimeArray[Math.floor(Math.random() * validAnimeArray.length)];
+  console.log("anime by genre result: ", randomAnime);
+  return randomAnime;
+};
+
+export const getPerfectAnime = async (type, genre) => {
+  const data = await fetchData(AllAnimeUrl);
+  console.log(data);
+
+  const allAnimeArray = [];
+  data.data.forEach((anime) => {
+    const getGenres = () => {
+      let genres = [];
+      anime.genres.forEach((genre) => {
+        genres.push(genre.name);
+      });
+      return genres;
+    };
+    if (anime.type === "TV" || anime.movie === "Movie") {
+      allAnimeArray.push({
+        id: anime.mal_id,
+        title: anime.title,
+        image: anime.images.jpg.image_url,
+        type: anime.type,
+        popularity: anime.rank,
+        genres: getGenres(),
+      });
+    }
+  });
+
+  const genreArray = [];
+  const typeArray = [];
+
+  allAnimeArray.forEach((anime) => {
+    if (anime.type == type) {
+      typeArray.push(anime);
+    }
+  });
+  console.log("step 1, typeArr: ", typeArray);
+
+  allAnimeArray.forEach((anime) => {
+    if (anime.genres.includes(genre)) {
+      genreArray.push(anime);
+    }
+  });
+  console.log("step 2, genreArr: ", genreArray);
+
+  const perfectAnimeArray = genreArray.filter((anime) =>
+    typeArray.includes(anime)
+  );
+
+  const randomAnime =
+    perfectAnimeArray[Math.floor(Math.random() * perfectAnimeArray.length)];
+  console.log("anime by perfect result: ", randomAnime);
+  return randomAnime;
+};
+
+// testing push should appear

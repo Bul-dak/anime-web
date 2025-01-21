@@ -26,12 +26,21 @@ export const getAnimeById = async (id) => {
   const data = await fetchData(url);
   console.log("Testing getAnimeById", data);
 
+  const getGenres = () => {
+    let genres = [];
+    data.data.genres.forEach((genre) => {
+      genres.push(genre.name);
+    });
+    return genres;
+  };
+
   const animeObj = {
     id: data.data.mal_id,
     title: data.data.title,
     titleEnglish: data.data.title_english,
     imageUrl: data.data.images.jpg.image_url,
     type: data.data.type,
+    genres: getGenres(),
     episodes: data.data.episodes,
     aired: data.data.aired.string,
     duration: data.data.duration,
