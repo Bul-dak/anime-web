@@ -2,7 +2,7 @@
 import { setLocalStorageKey } from "./local-storage-helpers";
 
 const baseUrl = "https://api.jikan.moe/v4/anime";
-
+// fetch logic wrapper 
 export const fetchData = async (url) => {
   try {
     const response = await fetch(url);
@@ -60,14 +60,13 @@ export const fetchAllAnime = async (url) => {
     const data = await fetchData(url);
     // Create variable allAnimeArray where we will store titles, id#s, rank of each anime.
     const allAnimeArray = [];
+
+    // Function to get genres
+    const getGenres = (anime) => {
+      return anime.genres.map((genre) => genre.name);
+    };
+
     data.data.forEach((anime) => {
-      const getGenres = () => {
-        let genres = [];
-        anime.genres.forEach((genre) => {
-          genres.push(genre.name);
-        });
-        return genres;
-      };
       if (anime.type === "TV" || anime.movie === "Movie") {
         allAnimeArray.push({
           id: anime.mal_id,
@@ -75,8 +74,9 @@ export const fetchAllAnime = async (url) => {
           image: anime.images.jpg.image_url,
           type: anime.type,
           popularity: anime.rank,
-          genres: getGenres(),
+          genres: getGenres(anime),
         });
+        console.log(getGenres(anime));
       }
     });
 

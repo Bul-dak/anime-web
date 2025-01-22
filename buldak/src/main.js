@@ -51,9 +51,6 @@ import {
   renderRecommendedAnime,
 } from "./render-functions";
 
-// Import getActiveUser from login-main.js
-import { getActiveUser } from "../login/main-login";
-
 // store url of API from where we'll be retrieveing all animes in a variable
 const AllAnimesUrl = "https://api.jikan.moe/v4/top/anime";
 
