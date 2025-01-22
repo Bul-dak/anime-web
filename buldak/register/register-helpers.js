@@ -40,8 +40,8 @@ export const registerNewUser = async (formData) => {
         login: false,
       };
       // Retrieve existing users from localStorage
-      const users = localStorage.getItem(username)
-        ? JSON.parse(localStorage.getItem(username))
+      const users = localStorage.getItem("users")
+        ? JSON.parse(localStorage.getItem("users"))
         : {};
 
       // Add new user to the users object

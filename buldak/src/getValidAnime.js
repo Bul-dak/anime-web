@@ -3,6 +3,7 @@
 import { fetchData } from "./fetch-functions";
 
 const AllAnimeUrl = "https://api.jikan.moe/v4/anime";
+// const apiUrl = `https://api.jikan.moe/v4/top/anime?genre=${genre}&type=${type}&page=${pageNumber}&limit=25`;
 
 export const getRandomAnime = async () => {
   console.log("getRandomAnime is executing");
@@ -45,7 +46,9 @@ export const getRandomAnime = async () => {
 
 // Runs if type is the only value provided and if both values are provided
 export const getAnimeByType = async (type) => {
-  const data = await fetchData(AllAnimeUrl);
+  const pageNumber = Math.floor(Math.random() * 50);
+  const animeUrl = `https://api.jikan.moe/v4/top/anime?type=${type}&page=${pageNumber}&limit=25`;
+  const data = await fetchData(animeUrl);
   console.log(data);
 
   const allAnimeArray = [];
@@ -84,7 +87,9 @@ export const getAnimeByType = async (type) => {
 };
 
 export const getAnimeByGenre = async (genre) => {
-  const data = await fetchData(AllAnimeUrl);
+  const pageNumber = Math.floor(Math.random() * 50);
+  const animeUrl = `https://api.jikan.moe/v4/top/anime?genre=${genre}&page=${pageNumber}&limit=25`;
+  const data = await fetchData(animeUrl);
   console.log(data);
 
   const allAnimeArray = [];
