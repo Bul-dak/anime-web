@@ -3,7 +3,8 @@ import {
   setLocalStorageKey,
   getLocalStorageKey,
 } from "../src/local-storage-helpers";
-import { fetchAnimesBasedOnGenre, fetchAnimes } from "./genre-fetch-helpers";
+import { fetchAnimes } from "./genre-fetch-helpers";
+import { handleDetailsOpen } from "../src/dom-helpers";
 
 /* Create a function to aid us in moving through genre-list pages */
 
@@ -74,6 +75,8 @@ export const renderGenderList = (genderListArray) => {
 
     const img = document.createElement("img");
     img.src = anime.image;
+    img.setAttribute("data-id", anime.id);
+    img.addEventListener("click", handleDetailsOpen);
 
     const title = document.createElement("h3");
     title.classList.add("anime-title");

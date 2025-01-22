@@ -2,7 +2,11 @@ import { handleRandomButton, handleSubmitRecommendation } from "./dom-helpers";
 import "./style.css";
 import { fetchAllAnime } from "./fetch-functions";
 import { setLocalStorageKey } from "./local-storage-helpers";
-import { renderTopFiveAnime, renderUserContent } from "./render-functions";
+import {
+  renderTopFiveAnime,
+  renderUserContent,
+  renderUsername,
+} from "./render-functions";
 import { setRecommendedAnime } from "./local-storage-helpers";
 
 // All anime endpoint
@@ -50,32 +54,3 @@ const main = async () => {
 };
 
 main();
-
-// // store url of API from where we'll be retrieveing all animes in a variable
-// const AllAnimesUrl = "https://api.jikan.moe/v4/top/anime";
-
-// // call function fetchAllAnimes, pass it allAnimesUrL and store its returned value on local storage
-// fetchAllAnime(AllAnimesUrl);
-
-// // call function renderTopFiveAnimes
-// renderTopFiveAnime();
-
-// // Wait for the DOM to be fully loaded
-// renderUserContent();
-
-// // grab all the genreSelectors dropdown options
-// const genresSelectors = document.querySelectorAll(".dropdown");
-
-// // iterate over all of them and retrieve their dataset values
-// genresSelectors.forEach((genreSelector) => {
-//   genreSelector.addEventListener("click", async (event) => {
-//     const genre = event.target.dataset.genre;
-//     setLocalStorageKey("currentGenre", genre);
-//     const type = event.target.dataset.type;
-//     setLocalStorageKey("currentType", type);
-//     setLocalStorageKey("currentPage", 1);
-
-//     // Log to check if the values are correctly retrieved
-//     console.log(`Genre: ${genre}, Type: ${type}`);
-//   });
-// });

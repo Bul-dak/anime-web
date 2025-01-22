@@ -1,8 +1,5 @@
 // Import local storage helpers
-import {
-  setLocalStorageKey,
-  getLocalStorageKey,
-} from "../src/local-storage-helpers";
+import { setLocalStorageKey } from "../src/local-storage-helpers";
 
 /* work on logic for verifying password by hashing password input then retrieving hashed password 
    from local storage using username input as key and comparing our hashed password input to
@@ -61,7 +58,7 @@ export const verifyLogin = async (formData) => {
     }
   } else {
     alert(
-      "The username you entered is not linked to an existing Buldack account."
+      "The username you entered is not linked to an existing Buldak account."
     );
   }
 };

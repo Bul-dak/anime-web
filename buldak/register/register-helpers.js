@@ -36,7 +36,7 @@ export const registerNewUser = async (formData) => {
       const newUserObject = {
         username: username,
         password: hashedUserPassword,
-        savedAnimes: [],
+        savedAnime: [],
         login: false,
       };
       // Retrieve existing users from localStorage
