@@ -6,4 +6,6 @@ export default defineConfig({
     port: 5500, // Set the port to 5500
     open: true, // Automatically open the browser
   },
+
+  base: "/buldak/",
 });
