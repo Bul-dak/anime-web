@@ -3,7 +3,6 @@
 import { fetchData } from "./fetch-functions";
 
 const AllAnimeUrl = "https://api.jikan.moe/v4/anime";
-// const apiUrl = `https://api.jikan.moe/v4/top/anime?genre=${genre}&type=${type}&page=${pageNumber}&limit=25`;
 
 export const getRandomAnime = async () => {
   console.log("getRandomAnime is executing");
