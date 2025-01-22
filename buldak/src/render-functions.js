@@ -89,6 +89,7 @@ export const renderAnimeDetails = (animeObj) => {
 
   const saveButton = document.createElement("button");
   saveButton.setAttribute("id", "save-anime");
+  saveButton.setAttribute("data-id", animeObj.id);
   saveButton.addEventListener("click", handleSave);
   saveButton.textContent = "Save to Watch List";
 
@@ -204,14 +205,14 @@ export const renderUsername = (user) => {
   dropdownDiv.append(anchor1);
   dropdownDiv.append(anchor2);
 
-  // append dropdowndiv to loginDiv
+  // append dropdownDiv to loginDiv
   loginDiv.append(dropdownDiv);
 };
 
 // Wait for the DOM to be fully loaded
 
 export const renderUserContent = () => {
-  // if user is logged in while on buldack this should re-render the main page accordingly
+  // if user is logged in while on buldak this should re-render the main page accordingly
 
   document.addEventListener("DOMContentLoaded", () => {
     const activeUser = JSON.parse(localStorage.getItem("activeUser"));

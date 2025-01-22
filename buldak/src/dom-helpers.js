@@ -1,6 +1,7 @@
 import { renderAnimeDetails, renderRecommendedAnime } from "./render-functions";
 import { getAnimeById } from "./fetch-functions";
 import {
+  getLocalStorageKey,
   setLocalStorageKey,
   setRecommendedAnime,
 } from "./local-storage-helpers";
@@ -78,6 +79,22 @@ export const handleSubmitRecommendation = async (event) => {
 
 export const handleSave = async (event) => {
   const saveButton = event.target;
+  console.log("Save worked: ", saveButton.dataset.id);
+
+  const activeUser = getLocalStorageKey("activeUser");
+  console.log("Active user: ", activeUser);
+
+  const localStorageData = localStorage.getItem("users");
+
+  let parsedData = JSON.parse(localStorageData);
+
+  const animeToBeAdded = await getAnimeById(saveButton.dataset.id);
+
+  parsedData[activeUser.username].savedAnime.push(animeToBeAdded);
+
+  const updatedData = JSON.stringify(parsedData);
+
+  localStorage.setItem("users", updatedData);
 };
 
 export const handleRandomButton = async () => {

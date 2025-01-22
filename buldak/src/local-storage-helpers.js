@@ -40,7 +40,6 @@ export const getSavedAnime = () => {
 export const setRecommendedAnime = () => {
   setLocalStorageKey("recommendedAnime", []);
 };
-
 export const getRecommendedAnime = () => {
   return getLocalStorageKey("recommendedAnime") || {};
 };

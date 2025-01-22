@@ -168,7 +168,7 @@ body {
   margin-top: 80px;
   padding: 0;
 }
-#top-five-anime {
+#anime-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin-top: 40px;
@@ -180,7 +180,7 @@ body {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
   background: #1c1c1c;
 }
-#top-five-anime .anime-card {
+#render-zone .anime-card {
   background: rgba(0, 0, 0, 0.5);
   border-radius: 8px;
   overflow: hidden;
@@ -193,11 +193,11 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
-#top-five-anime .anime-card:hover {
+#render-zone .anime-card:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
 }
-#top-five-anime .anime-card .anime-title {
+#render-zone .anime-card .anime-title {
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
   font-weight: 600;
@@ -212,7 +212,7 @@ body {
   text-align: center;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
-#top-five-anime .anime-card img {
+#render-zone .anime-card img {
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -220,116 +220,22 @@ body {
   border-radius: 8px 8px 0 0;
 }
 @media (max-width: 768px) {
-  #top-five-anime {
+  #render-zone {
     grid-template-columns: 1fr 1fr;
   }
-  #top-five-anime .anime-card {
+  #render-zone .anime-card {
     max-width: 100%;
   }
-  #top-five-anime .anime-title {
+  #render-zone .anime-title {
     font-size: 1.2rem;
   }
 }
 @media (max-width: 480px) {
-  #top-five-anime {
+  #render-zone {
     grid-template-columns: 1fr;
   }
-  #top-five-anime .anime-title {
+  #render-zone .anime-title {
     font-size: 1rem;
-  }
-}
-#suggestion-form {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 30px;
-  background-color: #333333;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  margin-top: 40px;
-  font-family: "Quicksand", Arial, sans-serif;
-  color: #e0e0e0;
-}
-#suggestion-form fieldset {
-  border: 1px solid #444444;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
-  background-color: #444444;
-}
-#suggestion-form legend {
-  font-family: "Poppins", sans-serif;
-  font-size: 1.1em;
-  color: #e0e0e0;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-#suggestion-form label {
-  display: inline-block;
-  margin-bottom: 15px;
-  font-size: 1rem;
-  color: #e0e0e0;
-  padding-left: 20px;
-  cursor: pointer;
-  position: relative;
-  transition: color 0.3s ease;
-}
-#suggestion-form input[type="radio"] {
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: #444444;
-  border: 3px solid #ff7f50;
-  position: relative;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-#suggestion-form input[type="radio"]:checked {
-  background-color: #ff7f50;
-}
-#suggestion-form input[type="radio"]:checked::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: white;
-  transform: translate(-50%, -50%);
-}
-#suggestion-form input[type="radio"]:hover {
-  background-color: #ff7043;
-}
-#suggestion-form label:hover {
-  color: #ff7043;
-}
-#suggestion-form button {
-  background-color: #121212;
-  color: white;
-  padding: 12px 25px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  display: block;
-  margin-top: 20px;
-  width: 100%;
-}
-#suggestion-form button:hover {
-  background-color: #ff7043;
-  transform: scale(1.05);
-}
-@media (max-width: 768px) {
-  #suggestion-form {
-    padding: 20px;
-  }
-  #suggestion-form fieldset {
-    padding: 15px;
-  }
-  #suggestion-form button {
-    padding: 12px;
   }
 }
 
@@ -359,18 +265,4 @@ dialog button {
 dialog button:hover {
   background-color: #ff7043;
   transform: scale(1.05);
-}
-
-#render-zone {
-  display: flex;
-  margin-top: 40px;
-  gap: 20px;
-  padding: 40px 20px;
-  border-radius: 10px;
-  color: #ffffff;
-  text-align: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  background: #1c1c1c;
-  align-items: center;
-  justify-content: center;
 }
