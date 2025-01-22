@@ -20,7 +20,7 @@ export const fetchAnimesBasedOnGenre = async (genre, type, pageNumber) => {
   try {
     const response = await fetch(apiUrl);
 
-    if (!response.ok) throw new Error("Failed to fetch ALL THE ANIMES!!");
+    if (!response.ok) throw new Error("Failed to fetch ALL THE ANIME!!");
     if (response === null) return response;
 
     const genderAnimeJson = await response.json();

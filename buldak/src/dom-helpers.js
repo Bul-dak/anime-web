@@ -1,4 +1,9 @@
-import { renderAnimeDetails, renderRecommendedAnime } from "./render-functions";
+import {
+  renderAnimeDetails,
+  renderAnimeDetailsWatchlist,
+  renderRecommendedAnime,
+  renderUsername,
+} from "./render-functions";
 import { getAnimeById } from "./fetch-functions";
 import {
   getLocalStorageKey,
@@ -19,6 +24,16 @@ export const handleDetailsOpen = async (event) => {
   const dialog = document.querySelector("dialog");
   dialog.innerHTML = "";
   renderAnimeDetails(animeObj);
+  dialog.showModal();
+};
+
+export const handleDetailsOpenWatchlist = async (event) => {
+  const img = event.target;
+  const id = img.dataset.id;
+  const animeObj = await getAnimeById(id);
+  const dialog = document.querySelector("dialog");
+  dialog.innerHTML = "";
+  renderAnimeDetailsWatchlist(animeObj);
   dialog.showModal();
 };
 
@@ -90,11 +105,27 @@ export const handleSave = async (event) => {
 
   const animeToBeAdded = await getAnimeById(saveButton.dataset.id);
 
-  parsedData[activeUser.username].savedAnime.push(animeToBeAdded);
+  console.log("Before if: ", parsedData[activeUser.username].savedAnime);
 
+  let push = true;
+
+  parsedData[activeUser.username].savedAnime.forEach((anime) => {
+    if (anime.id == animeToBeAdded.id) {
+      push = false;
+    }
+  });
+
+  if (push == true) {
+    parsedData[activeUser.username].savedAnime.push(animeToBeAdded);
+  }
+
+  console.log("After if: ", parsedData[activeUser.username].savedAnime);
   const updatedData = JSON.stringify(parsedData);
 
   localStorage.setItem("users", updatedData);
+
+  setTimeout(() => (saveButton.textContent = "Anime Saved"), 100);
+  setTimeout(() => (saveButton.textContent = "Save to Watchlist"), 2000);
 };
 
 export const handleRandomButton = async () => {
@@ -105,4 +136,47 @@ export const handleRandomButton = async () => {
   console.log(randomAnime);
   // Need to have a render function
   renderRecommendedAnime(randomAnime);
+};
+
+export const handleDelete = async (event) => {
+  const saveButton = event.target;
+  console.log("Save worked: ", saveButton.dataset.id);
+
+  const activeUser = getLocalStorageKey("activeUser");
+  console.log("Active user: ", activeUser);
+
+  const localStorageData = localStorage.getItem("users");
+
+  let parsedData = JSON.parse(localStorageData);
+
+  const animeToBeDeleted = await getAnimeById(saveButton.dataset.id);
+
+  console.log("Before if: ", parsedData[activeUser.username].savedAnime);
+
+  parsedData[activeUser.username].savedAnime.every((anime, index) => {
+    if (anime.id == animeToBeDeleted.id) {
+      parsedData[activeUser.username].savedAnime.splice(index, 1);
+    }
+  });
+
+  console.log("After if: ", parsedData[activeUser.username].savedAnime);
+
+  const updatedData = JSON.stringify(parsedData);
+  localStorage.setItem("users", updatedData);
+
+  location.reload();
+};
+export const handleLoad = () => {
+  const activeUser = JSON.parse(localStorage.getItem("activeUser"));
+
+  if (activeUser && activeUser.username) {
+    renderUsername(activeUser);
+  } else {
+    console.log("No active user or user is not logged in");
+  }
+};
+
+export const handleLogout = () => {
+  window.location.href = "../index.html";
+  console.log("No active user or user is not logged in");
 };

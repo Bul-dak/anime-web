@@ -54,22 +54,38 @@ export const genreListPageScroller = () => {
 };
 
 // Function to render gender list from localStorage
-export const renderGenderList = (genderListArray) => {
+export const renderGenderList = (genreListArray) => {
+  const genreTitle = document.querySelector(".main-titles");
+
+  let currentGenre = localStorage.getItem("currentGenre");
+  let currentType = localStorage.getItem("currentType");
+
+  if (currentType == '"TV"') {
+    currentType = "Series";
+  } else {
+    currentType = "Movies";
+  }
+  currentGenre = currentGenre
+    .split("")
+    .splice(1, currentGenre.length - 2)
+    .join("");
+
+  genreTitle.textContent = `${currentType}: Featured ${currentGenre}`;
   // store the div where we'll be rendering our gender list animes in a variable
   const genreDiv = document.querySelector("#anime-grid");
 
   // Clear any existing content in the grid
   genreDiv.innerHTML = "";
 
-  // If genderListArray is null or undefined, return early to avoid errors
-  if (!genderListArray || genderListArray.length === 0) {
+  // If genreListArray is null or undefined, return early to avoid errors
+  if (!genreListArray || genreListArray.length === 0) {
     console.error("No genre list found in localStorage.");
     genreDiv.innerHTML = "<h3>No Titles Found In This Page</h3>";
     return;
   }
 
-  // Iterate through the genderListArray and create elements for each anime
-  genderListArray.forEach((anime) => {
+  // Iterate through the genreListArray and create elements for each anime
+  genreListArray.forEach((anime) => {
     const div = document.createElement("div");
     div.classList.add("anime-card"); // Add the correct class to the div
 
