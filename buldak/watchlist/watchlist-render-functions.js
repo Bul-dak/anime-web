@@ -1,4 +1,7 @@
-import { handleDetailsOpen } from "../src/dom-helpers";
+import {
+  handleDetailsOpen,
+  handleDetailsOpenWatchlist,
+} from "../src/dom-helpers";
 import { getLocalStorageKey } from "../src/local-storage-helpers";
 
 export const renderSavedAnime = (savedAnimeArray) => {
@@ -22,7 +25,7 @@ export const renderSavedAnime = (savedAnimeArray) => {
       const img = document.createElement("img");
       img.src = anime.imageUrl;
       img.setAttribute("data-id", anime.id);
-      img.addEventListener("click", handleDetailsOpen);
+      img.addEventListener("click", handleDetailsOpenWatchlist);
 
       const title = document.createElement("h3");
       title.classList.add("anime-title");

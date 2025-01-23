@@ -1,27 +1,19 @@
-import { handleRandomButton, handleSubmitRecommendation } from "./dom-helpers";
+import {
+  handleLoad,
+  handleRandomButton,
+  handleSubmitRecommendation,
+} from "./dom-helpers";
 import "./style.css";
 import { fetchAllAnime } from "./fetch-functions";
 import { setLocalStorageKey } from "./local-storage-helpers";
-import {
-  renderTopFiveAnime,
-  renderUserContent,
-  renderUsername,
-} from "./render-functions";
+import { renderTopFiveAnime, renderUserContent } from "./render-functions";
 import { setRecommendedAnime } from "./local-storage-helpers";
 
 // All anime endpoint
 const AllAnimeUrl = "https://api.jikan.moe/v4/top/anime";
 
 const main = async () => {
-  document.addEventListener("DOMContentLoaded", () => {
-    const activeUser = JSON.parse(localStorage.getItem("activeUser"));
-
-    if (activeUser && activeUser.username) {
-      renderUsername(activeUser);
-    } else {
-      console.log("No active user or user is not logged in");
-    }
-  });
+  document.addEventListener("DOMContentLoaded", handleLoad);
 
   setRecommendedAnime();
   await fetchAllAnime(AllAnimeUrl);

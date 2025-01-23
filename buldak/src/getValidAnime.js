@@ -45,7 +45,9 @@ export const getRandomAnime = async () => {
 
 // Runs if type is the only value provided and if both values are provided
 export const getAnimeByType = async (type) => {
-  const data = await fetchData(AllAnimeUrl);
+  const pageNumber = Math.floor(Math.random() * 50);
+  const animeUrl = `https://api.jikan.moe/v4/top/anime?type=${type}&page=${pageNumber}&limit=25`;
+  const data = await fetchData(animeUrl);
   console.log(data);
 
   const allAnimeArray = [];
@@ -57,7 +59,7 @@ export const getAnimeByType = async (type) => {
       });
       return genres;
     };
-    if (anime.type === "TV" || anime.movie === "Movie") {
+    if (anime.type === "TV" || anime.type === "Movie") {
       allAnimeArray.push({
         id: anime.mal_id,
         title: anime.title,
@@ -84,7 +86,9 @@ export const getAnimeByType = async (type) => {
 };
 
 export const getAnimeByGenre = async (genre) => {
-  const data = await fetchData(AllAnimeUrl);
+  const pageNumber = Math.floor(Math.random() * 50);
+  const animeUrl = `https://api.jikan.moe/v4/top/anime?genre=${genre}&page=${pageNumber}&limit=25`;
+  const data = await fetchData(animeUrl);
   console.log(data);
 
   const allAnimeArray = [];
@@ -96,7 +100,7 @@ export const getAnimeByGenre = async (genre) => {
       });
       return genres;
     };
-    if (anime.type === "TV" || anime.movie === "Movie") {
+    if (anime.type === "TV" || anime.type === "Movie") {
       allAnimeArray.push({
         id: anime.mal_id,
         title: anime.title,
@@ -137,7 +141,7 @@ export const getPerfectAnime = async (type, genre) => {
       });
       return genres;
     };
-    if (anime.type === "TV" || anime.movie === "Movie") {
+    if (anime.type === "TV" || anime.type === "Movie") {
       allAnimeArray.push({
         id: anime.mal_id,
         title: anime.title,
