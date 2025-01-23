@@ -153,17 +153,24 @@ export const handleDelete = async (event) => {
 
   console.log("Before if: ", parsedData[activeUser.username].savedAnime);
 
-  parsedData[activeUser.username].savedAnime.every((anime, index) => {
-    if (anime.id == animeToBeDeleted.id) {
-      parsedData[activeUser.username].savedAnime.splice(index, 1);
-    }
-  });
+  // Find the index of the anime to be deleted
+  const animeIndex = parsedData[activeUser.username].savedAnime.findIndex(
+    (anime) => anime.id == animeToBeDeleted.id
+  );
 
-  console.log("After if: ", parsedData[activeUser.username].savedAnime);
+  if (animeIndex !== -1) {
+    parsedData[activeUser.username].savedAnime.splice(animeIndex, 1); // Remove the anime
+    console.log("Anime removed:", animeToBeDeleted);
+  } else {
+    console.log("Anime not found in the saved list");
+  }
+
+  console.log("After deletion: ", parsedData[activeUser.username].savedAnime);
 
   const updatedData = JSON.stringify(parsedData);
   localStorage.setItem("users", updatedData);
 
+  // Optionally reload the page to update the UI or you can re-render the list without reload
   location.reload();
 };
 export const handleLoad = () => {
