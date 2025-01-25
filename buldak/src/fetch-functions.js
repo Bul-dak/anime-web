@@ -2,7 +2,7 @@
 import { setLocalStorageKey } from "./local-storage-helpers";
 
 const baseUrl = "https://api.jikan.moe/v4/anime";
-// fetch logic wrapper 
+// fetch logic wrapper
 export const fetchData = async (url) => {
   try {
     const response = await fetch(url);

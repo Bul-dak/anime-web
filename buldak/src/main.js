@@ -13,36 +13,54 @@ import { setRecommendedAnime } from "./local-storage-helpers";
 const AllAnimeUrl = "https://api.jikan.moe/v4/top/anime";
 
 const main = async () => {
-  document.addEventListener("DOMContentLoaded", handleLoad);
+  try {
+    // Ensure the DOM is ready
+    handleLoad();
 
-  setRecommendedAnime();
-  await fetchAllAnime(AllAnimeUrl);
-  renderTopFiveAnime();
+    // Set up initial data and render UI
+    setRecommendedAnime();
+    await fetchAllAnime(AllAnimeUrl);
+    renderTopFiveAnime();
+    renderUserContent();
 
-  renderUserContent();
+    // Delegate dropdown click events
+    const genreContainer = document.querySelector(".menu");
+    if (genreContainer) {
+      genreContainer.addEventListener("click", (event) => {
+        const target = event.target;
+        if (target.dataset?.genre && target.dataset?.type) {
+          setLocalStorageKey("currentGenre", target.dataset.genre);
+          setLocalStorageKey("currentType", target.dataset.type);
+          setLocalStorageKey("currentPage", 1);
 
-  // grab all the genreSelectors dropdown options
-  const genresSelectors = document.querySelectorAll(".dropdown");
+          console.log(
+            `Genre: ${target.dataset.genre}, Type: ${target.dataset.type}`
+          );
+        }
+      });
+    } else {
+      console.warn("Genre dropdown menu container not found.");
+    }
 
-  // iterate over all of them and retrieve their dataset values
-  genresSelectors.forEach((genreSelector) => {
-    genreSelector.addEventListener("click", async (event) => {
-      const genre = event.target.dataset.genre;
-      setLocalStorageKey("currentGenre", genre);
-      const type = event.target.dataset.type;
-      setLocalStorageKey("currentType", type);
-      setLocalStorageKey("currentPage", 1);
+    // Add form submission handling
+    const form = document.querySelector("form");
+    if (form) {
+      form.addEventListener("submit", handleSubmitRecommendation);
+    } else {
+      console.warn("Form not found on the page.");
+    }
 
-      // Log to check if the values are correctly retrieved
-      console.log(`Genre: ${genre}, Type: ${type}`);
-    });
-  });
-
-  const form = document.querySelector("form");
-  form.addEventListener("submit", handleSubmitRecommendation);
-
-  const random = document.getElementById("random-button");
-  random.addEventListener("click", handleRandomButton);
+    // Add random button handling
+    const randomButton = document.getElementById("random-button");
+    if (randomButton) {
+      randomButton.addEventListener("click", handleRandomButton);
+    } else {
+      console.warn("Random button not found on the page.");
+    }
+  } catch (error) {
+    console.error("Error initializing main function:", error);
+  }
 };
 
+// Execute main
 main();
