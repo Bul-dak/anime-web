@@ -176,26 +176,34 @@ export const renderUsername = (user) => {
     return;
   }
 
-  // Clear and update the loginDiv
-  loginDiv.innerHTML = "";
-  loginDiv.classList.replace("login-button", "menu-item");
+  try {
+    // Clear and update the loginDiv
+    loginDiv.innerHTML = "";
+    loginDiv.classList.replace("login-button", "menu-item");
 
-  // Create the username display and dropdown menu
-  loginDiv.innerHTML = `
-    <h4>${user.username}</h4>
-    <div class="dropdown">
-      <a href="/watchlist/watchlist.html">Watchlist</a>
-      <a href="#" class="logout">Logout</a>
-    </div>
-  `;
+    // Insert HTML structure for username and dropdown
+    loginDiv.innerHTML = `
+      <h4>${user.username}</h4>
+      <div class="dropdown">
+        <a href="/anime-web/watchlist/watchlist.html">Watchlist</a>
+        <a href="#" class="logout">Logout</a>
+      </div>
+    `;
 
-  // Add logout functionality
-  const logoutButton = loginDiv.querySelector(".logout");
-  logoutButton.addEventListener("click", (event) => {
-    event.preventDefault();
-    localStorage.removeItem("activeUser");
-    window.location.href = "../index.html";
-  });
+    // Add logout functionality
+    const logoutButton = loginDiv.querySelector(".logout");
+    logoutButton.addEventListener("click", (event) => {
+      try {
+        event.preventDefault();
+        localStorage.removeItem("activeUser");
+        window.location.href = "../index.html";
+      } catch (error) {
+        console.error("Error during logout process:", error);
+      }
+    });
+  } catch (error) {
+    console.error("Error rendering username dropdown:", error);
+  }
 };
 
 /**
