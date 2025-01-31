@@ -48,3 +48,18 @@ export const addRecommendedAnime = (recommendation) => {
   previousRecommendations[recommendation.id] = recommendation;
   return previousRecommendations;
 };
+
+export const checkAndApplyTheme = (currentTheme) => {
+  const body = document.body;
+  // Check and apply the user's theme preference from localStorage
+
+  if (currentTheme === "light") {
+    body.classList.add("lightmode");
+    body.classList.remove("darkmode");
+  } else if (currentTheme === "dark") {
+    body.classList.add("darkmode");
+    body.classList.remove("lightmode");
+  } else {
+    body.classList.add("darkmode");
+  }
+};

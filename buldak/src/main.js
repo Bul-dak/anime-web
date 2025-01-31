@@ -5,93 +5,102 @@ import {
 } from "./dom-helpers";
 import "./style.css";
 import { fetchAllAnime } from "./fetch-functions";
-import { setLocalStorageKey } from "./local-storage-helpers";
+import {
+  setLocalStorageKey,
+  checkAndApplyTheme,
+} from "./local-storage-helpers";
 import { renderTopFiveAnime, renderUserContent } from "./render-functions";
 import { setRecommendedAnime } from "./local-storage-helpers";
 
-// All anime endpoint
-const AllAnimeUrl = "https://api.jikan.moe/v4/top/anime";
-
+// Main execution logic wrapped in a single function to better manage async setup
 const main = async () => {
   try {
-    // Ensure the DOM is ready
+    // Handle initial setup like loading and applying theme
     handleLoad();
+    initializeTheme();
 
-    // Set up initial data and render UI
-    setRecommendedAnime();
-    await fetchAllAnime(AllAnimeUrl);
-    renderTopFiveAnime();
-    renderUserContent();
+    // Set initial recommended anime and fetch all anime data
+    await setupAnimeData();
 
-    // Delegate dropdown click events
-    const genreContainer = document.querySelector(".menu");
-    if (genreContainer) {
-      genreContainer.addEventListener("click", (event) => {
-        const target = event.target;
-        if (target.dataset?.genre && target.dataset?.type) {
-          setLocalStorageKey("currentGenre", target.dataset.genre);
-          setLocalStorageKey("currentType", target.dataset.type);
-          setLocalStorageKey("currentPage", 1);
+    // Set up genre dropdown and event listeners
+    setupGenreDropdown();
 
-          console.log(
-            `Genre: ${target.dataset.genre}, Type: ${target.dataset.type}`
-          );
-        }
-      });
-    } else {
-      console.warn("Genre dropdown menu container not found.");
-    }
+    // Set up form submission handling
+    setupFormHandling();
 
-    // Add form submission handling
-    const form = document.querySelector("form");
-    if (form) {
-      form.addEventListener("submit", handleSubmitRecommendation);
-    } else {
-      console.warn("Form not found on the page.");
-    }
-
-    // Add random button handling
-    const randomButton = document.getElementById("random-button");
-    if (randomButton) {
-      randomButton.addEventListener("click", handleRandomButton);
-    } else {
-      console.warn("Random button not found on the page.");
-    }
+    // Set up random button functionality
+    setupRandomButton();
   } catch (error) {
     console.error("Error initializing main function:", error);
   }
 };
 
+// Function to handle light/dark mode
+const initializeTheme = () => {
+  const lightModeButton = document.querySelector(".lightmode-button");
+  const darkModeButton = document.querySelector(".darkmode-button");
+  const body = document.body;
+
+  const currentTheme = localStorage.getItem("theme");
+  checkAndApplyTheme(currentTheme); // Apply theme on load
+
+  // Add event listeners for both buttons
+  lightModeButton?.addEventListener("click", () => {
+    toggleTheme("light", body);
+  });
+
+  darkModeButton?.addEventListener("click", () => {
+    toggleTheme("dark", body);
+  });
+};
+
+// Helper function to toggle themes
+const toggleTheme = (theme, body) => {
+  const oppositeTheme = theme === "light" ? "dark" : "light";
+  body.classList.toggle(`${theme}mode`);
+  body.classList.remove(`${oppositeTheme}mode`);
+  localStorage.setItem("theme", theme);
+};
+
+// Function to fetch and render all anime-related data
+const setupAnimeData = async () => {
+  try {
+    setRecommendedAnime();
+    await fetchAllAnime("https://api.jikan.moe/v4/top/anime");
+    renderTopFiveAnime();
+    renderUserContent();
+  } catch (error) {
+    console.error("Error setting up anime data:", error);
+  }
+};
+
+// Function to set up genre dropdown and handle clicks
+const setupGenreDropdown = () => {
+  const genreContainer = document.querySelector(".menu");
+  genreContainer?.addEventListener("click", (event) => {
+    const target = event.target;
+    if (target.dataset?.genre && target.dataset?.type) {
+      setLocalStorageKey("currentGenre", target.dataset.genre);
+      setLocalStorageKey("currentType", target.dataset.type);
+      setLocalStorageKey("currentPage", 1);
+      console.log(
+        `Genre: ${target.dataset.genre}, Type: ${target.dataset.type}`
+      );
+    }
+  });
+};
+
+// Function to handle form submissions for recommendations
+const setupFormHandling = () => {
+  const form = document.querySelector("form");
+  form?.addEventListener("submit", handleSubmitRecommendation);
+};
+
+// Function to set up random button functionality
+const setupRandomButton = () => {
+  const randomButton = document.getElementById("random-button");
+  randomButton?.addEventListener("click", handleRandomButton);
+};
+
 // Execute main
-main();
-
-const lightModeButton = document.querySelector(".lightmode-button");
-const darkModeButton = document.querySelector(".darkmode-button");
-const body = document.body;
-
-// Check and apply the user's theme preference from localStorage
-const currentTheme = localStorage.getItem("theme");
-
-if (currentTheme === "light") {
-  body.classList.add("lightmode");
-  body.classList.remove("darkmode");
-} else if (currentTheme === "dark") {
-  body.classList.add("darkmode");
-  body.classList.remove("lightmode");
-}
-
-// Toggle light mode
-lightModeButton.addEventListener("click", () => {
-  body.classList.add("lightmode");
-  body.classList.remove("darkmode");
-
-  localStorage.setItem("theme", "light");
-});
-
-// Toggle dark mode
-darkModeButton.addEventListener("click", () => {
-  body.classList.add("darkmode");
-  body.classList.remove("lightmode");
-
-  localStorage.setItem("theme", "dark");
-});
+document.addEventListener("DOMContentLoaded", main);

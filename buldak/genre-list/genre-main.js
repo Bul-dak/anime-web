@@ -7,7 +7,10 @@ import { renderUserContent } from "../src/render-functions";
 import { renderGenderList, genreListPageScroller } from "./genre-helpers";
 import { fetchAnimesBasedOnGenre, fetchAnimes } from "./genre-fetch-helpers";
 
-import { setLocalStorageKey } from "../src/local-storage-helpers";
+import {
+  setLocalStorageKey,
+  checkAndApplyTheme,
+} from "../src/local-storage-helpers";
 
 // call renderUserContent which changes the display of the top bar based on whether the user is online vs offline
 renderUserContent();
@@ -48,4 +51,29 @@ genresSelectors.forEach((genreSelector) => {
 document.addEventListener("DOMContentLoaded", () => {
   genreListPageScroller(); // Set up the pagination event listeners
   fetchAnimes(); // Fetch the first page's anime data
+});
+
+//Light mode button and dark mode button html elements
+const lightModeButton = document.querySelector(".lightmode-button");
+const darkModeButton = document.querySelector(".darkmode-button");
+const body = document.body;
+
+// Check and apply the user's theme preference from localStorage
+const currentTheme = localStorage.getItem("theme");
+checkAndApplyTheme(currentTheme);
+
+// Toggle light mode
+lightModeButton.addEventListener("click", () => {
+  body.classList.add("lightmode");
+  body.classList.remove("darkmode");
+
+  localStorage.setItem("theme", "light");
+});
+
+// Toggle dark mode
+darkModeButton.addEventListener("click", () => {
+  body.classList.add("darkmode");
+  body.classList.remove("lightmode");
+
+  localStorage.setItem("theme", "dark");
 });

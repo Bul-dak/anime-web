@@ -11,3 +11,5 @@ New Feature ideas:
   I will render the darkmode-lightmode buttons manually using the html files, css-helpers.js create functions to give our buttons the right type of event listener and the desired effect which is to toggle the CSS accordingly.
 
 - make sure to add a light mode for the rest of the pages
+
+- fix the rendering of unwanted elements when we switch pages.
