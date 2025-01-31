@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="src/style.css" />
     <script type="module" src="/src/main.js"></script>
   </head>
-  <body>
+  <body class="darkmode">
     <main id="app">
       <!--Top bar section-->
       <section class="top-bar" name="top-bar">
@@ -92,6 +92,14 @@
             </div>
           </div>
         </div>
+        <!--Light mode button div-->
+        <div>
+          <button class="lightmode-button"></button>
+
+          <!--Dark mode button div-->
+
+          <button class="darkmode-button"></button>
+        </div>
         <!--Login button-->
         <div class="login-button">
           <a href="login/login.html">Log In</a>
@@ -99,7 +107,7 @@
       </section>
       <section class="top-ranked-anime" name="top-ranked-anime">
         <!--Website Intro-->
-        <div d="website-into">
+        <div id="website-into">
           <p>
             "Discover and explore new anime easily with our website! Search by
             keyword, view detailed info on each title, get personalized

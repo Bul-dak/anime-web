@@ -64,3 +64,34 @@ const main = async () => {
 
 // Execute main
 main();
+
+const lightModeButton = document.querySelector(".lightmode-button");
+const darkModeButton = document.querySelector(".darkmode-button");
+const body = document.body;
+
+// Check and apply the user's theme preference from localStorage
+const currentTheme = localStorage.getItem("theme");
+
+if (currentTheme === "light") {
+  body.classList.add("lightmode");
+  body.classList.remove("darkmode");
+} else if (currentTheme === "dark") {
+  body.classList.add("darkmode");
+  body.classList.remove("lightmode");
+}
+
+// Toggle light mode
+lightModeButton.addEventListener("click", () => {
+  body.classList.add("lightmode");
+  body.classList.remove("darkmode");
+
+  localStorage.setItem("theme", "light");
+});
+
+// Toggle dark mode
+darkModeButton.addEventListener("click", () => {
+  body.classList.add("darkmode");
+  body.classList.remove("lightmode");
+
+  localStorage.setItem("theme", "dark");
+});

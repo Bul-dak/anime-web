@@ -1,4 +1,4 @@
-body {
+body.darkmode {
   margin: 0;
   font-family: "Quicksand", Arial, sans-serif;
   background-color: #121212; /* Dark background */
@@ -6,8 +6,9 @@ body {
   line-height: 1.6;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
-.top-bar {
+.darkmode .top-bar {
   display: flex;
+  font-family: "Poppins", sans-serif;
   justify-content: space-between;
   align-items: center;
   background: linear-gradient(145deg, #333333, #1c1c1c); /* Dark gradient */
@@ -20,7 +21,7 @@ body {
   border-bottom: 2px solid #444444; /* Darker border */
   transition: background-color 0.3s ease;
 }
-#website-name {
+.darkmode #website-name {
   font-family: "Poppins", sans-serif;
   font-size: 2rem;
   font-weight: 700;
@@ -34,7 +35,7 @@ body {
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.9),
     0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.7);
 }
-#website-name {
+.darkmode #website-name {
   background: linear-gradient(to right, #ff5f6d, #ffc3a0);
   -webkit-background-clip: text;
   background-clip: text;
@@ -42,14 +43,14 @@ body {
   display: inline-block;
   text-shadow: none;
 }
-#website-name:hover {
+.darkmode #website-name:hover {
   cursor: pointer;
 }
-.menu {
+.darkmode .menu {
   display: flex;
   gap: 30px;
 }
-.menu-item {
+.darkmode .menu-item {
   position: relative;
   cursor: pointer;
   margin-right: 40px;
@@ -59,11 +60,11 @@ body {
   transition: color 0.3s ease, transform 0.3s ease;
   text-transform: capitalize;
 }
-.menu-item:hover {
+.darkmode .menu-item:hover {
   color: #ff7043;
   transform: scale(1.1);
 }
-.dropdown {
+.darkmode .dropdown {
   display: none;
   position: absolute;
   top: 100%;
@@ -78,7 +79,7 @@ body {
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0s linear 0.3s;
 }
-.dropdown a {
+.darkmode .dropdown a {
   display: block;
   padding: 12px 20px;
   text-decoration: none;
@@ -88,18 +89,18 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease,
     padding-left 0.2s ease;
 }
-.dropdown a:hover {
+.darkmode .dropdown a:hover {
   background-color: #ff7043;
   color: #ffffff;
   padding-left: 25px;
 }
-.menu-item:hover .dropdown {
+.darkmode .menu-item:hover .dropdown {
   display: block;
   opacity: 1;
   visibility: visible;
   transition: opacity 0.3s ease, visibility 0s linear 0s;
 }
-.login-button {
+.darkmode .login-button {
   display: inline-block;
   margin-left: 20px;
   background-color: #ff7f50;
@@ -113,16 +114,177 @@ body {
   transition: background-color 0.3s ease, transform 0.3s ease;
   text-decoration: none;
 }
-.login-button a {
+.darkmode .login-button a {
   color: white;
   text-decoration: none;
 }
-.login-button:hover {
+.darkmode .login-button:hover {
   background-color: #ff7043;
   transform: scale(1.05);
 }
-.login-button:focus {
+.darkmode .login-button:focus {
   outline: 3px solid #ff7043;
+}
+
+/* Light mode button design */
+.lightmode-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #ffd700 40%,
+    #ff8c00 70%,
+    rgba(255, 140, 0, 0) 80%
+  );
+  border: none;
+  box-shadow: 0 0 15px #ffcc00, 0 0 30px rgba(255, 204, 0, 0.6),
+    0 0 50px rgba(255, 204, 0, 0.3);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease-in-out, transform 0.2s ease;
+  transform-style: preserve-3d;
+  transform-origin: center;
+  animation: earth-rotation-light 10s infinite linear;
+}
+
+.lightmode-button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 130%;
+  height: 130%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 204, 0, 0.3) 30%,
+    rgba(255, 204, 0, 0) 80%
+  );
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes earth-rotation-light {
+  0% {
+    transform: rotateY(0deg) rotateX(23deg); /* Tilted for Earth-like rotation */
+  }
+  100% {
+    transform: rotateY(360deg) rotateX(23deg);
+  }
+}
+
+.lightmode-button:hover {
+  box-shadow: 0 0 25px #ffcc00, 0 0 50px rgba(255, 204, 0, 0.8),
+    0 0 75px rgba(255, 204, 0, 0.3);
+  transform: scale(1.1) rotateY(15deg); /* Slight tilt on hover for 3D effect */
+}
+
+.lightmode-button:active {
+  background: radial-gradient(
+    circle,
+    #ffec80 40%,
+    #ffae00 70%,
+    rgba(255, 140, 0, 0) 80%
+  );
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark mode button design */
+.darkmode-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #c0c0c0 40%,
+    #5a5a5a 70%,
+    rgba(90, 90, 90, 0) 80%
+  );
+  margin-left: 25px;
+  border: none;
+  box-shadow: 0 0 15px #b0b0b0, 0 0 30px rgba(176, 176, 176, 0.6),
+    0 0 50px rgba(176, 176, 176, 0.3);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease-in-out, transform 0.2s ease;
+  transform-style: preserve-3d;
+  transform-origin: center;
+  animation: earth-rotation-dark 10s infinite linear;
+}
+
+.darkmode-button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(
+    circle,
+    rgba(176, 176, 176, 0.3) 30%,
+    rgba(176, 176, 176, 0) 80%
+  );
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  animation: moon-pulse 2s infinite ease-in-out;
+}
+
+@keyframes moon-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+}
+
+@keyframes earth-rotation-dark {
+  0% {
+    transform: rotateY(0deg) rotateX(23deg); /* Tilted for Earth-like rotation */
+  }
+  100% {
+    transform: rotateY(360deg) rotateX(23deg);
+  }
+}
+
+.darkmode-button:hover {
+  box-shadow: 0 0 20px #b0b0b0, 0 0 40px rgba(176, 176, 176, 0.8),
+    0 0 75px rgba(176, 176, 176, 0.3);
+  transform: scale(1.1) rotateY(15deg); /* Slight tilt on hover for 3D effect */
+}
+
+.darkmode-button:active {
+  background: radial-gradient(
+    circle,
+    #e0e0e0 40%,
+    #6a6a6a 70%,
+    rgba(90, 90, 90, 0) 80%
+  );
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.3);
 }
 .top-ranked-anime {
   padding: 40px 20px;
@@ -159,7 +321,7 @@ body {
     font-size: 1.1rem;
   }
 }
-.main-titles {
+.darkmode .main-titles {
   font-family: "Poppins", sans-serif;
   font-size: 2rem;
   font-weight: 400;
@@ -168,7 +330,7 @@ body {
   margin-top: 80px;
   padding: 0;
 }
-#top-five-anime {
+.darkmode #top-five-anime {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin-top: 40px;
@@ -180,7 +342,7 @@ body {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
   background: #1c1c1c;
 }
-#top-five-anime .anime-card {
+.darkmode #top-five-anime .anime-card {
   background: rgba(0, 0, 0, 0.5);
   border-radius: 8px;
   overflow: hidden;
@@ -333,7 +495,7 @@ body {
   }
 }
 
-dialog {
+.darkmode dialog {
   margin: 0;
   font-family: "Quicksand", Arial, sans-serif;
   background-color: #1f1f1f; /* Dark background */
@@ -342,7 +504,7 @@ dialog {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-dialog button {
+.darkmode dialog button {
   background-color: #121212;
   color: white;
   padding: 12px 25px;
@@ -356,12 +518,12 @@ dialog button {
   width: 100%;
 }
 
-dialog button:hover {
+.darkmode dialog button:hover {
   background-color: #ff7043;
   transform: scale(1.05);
 }
 
-#render-zone {
+.darkmode #render-zone {
   display: flex;
   margin-top: 40px;
   gap: 20px;
@@ -375,7 +537,7 @@ dialog button:hover {
   justify-content: center;
 }
 
-.anime-card {
+.darkmode .anime-card {
   background: rgba(0, 0, 0, 0.5);
   border-radius: 8px;
   overflow: hidden;
@@ -389,12 +551,12 @@ dialog button:hover {
   justify-content: space-between;
 }
 
-.anime-card:hover {
+.darkmode .anime-card:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
 }
 
-.anime-card .anime-title {
+.darkmode .anime-card .anime-title {
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
   font-weight: 600;
@@ -416,4 +578,448 @@ dialog button:hover {
   object-fit: cover;
   border-bottom: 4px solid #ffffff;
   border-radius: 8px 8px 0 0;
+}
+
+/* Light Mode Styles */
+body.lightmode {
+  margin: 0;
+  font-family: "Quicksand", Arial, sans-serif;
+  background-color: #ffffff; /* Light background */
+  color: #121212; /* Dark text for readability */
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.lightmode .top-bar {
+  display: flex;
+  font-family: "Poppins", sans-serif;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(145deg, #ffffff, #e0e0e0); /* Light gradient */
+  color: #121212;
+  padding: 10px 40px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 2px solid #ccc;
+  transition: background-color 0.3s ease;
+}
+
+.lightmode #website-name {
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: #121212;
+  margin: 0;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.2),
+    0 0 60px rgba(0, 0, 0, 0.1);
+}
+
+.lightmode #website-name {
+  background: linear-gradient(to right, #ff5f6d, #ffc3a0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  text-shadow: none;
+}
+
+.lightmode #website-name:hover {
+  cursor: pointer;
+}
+
+.lightmode .menu {
+  display: flex;
+  gap: 30px;
+}
+
+.lightmode .menu-item {
+  position: relative;
+  cursor: pointer;
+  margin-right: 40px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #121212;
+  transition: color 0.3s ease, transform 0.3s ease;
+  text-transform: capitalize;
+}
+
+.lightmode .menu-item:hover {
+  color: #ff7043;
+  transform: scale(1.1);
+}
+
+.lightmode .dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  min-width: 110px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.lightmode .dropdown a {
+  display: block;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: #121212;
+  font-size: 0.9rem;
+  font-weight: 400;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    padding-left 0.2s ease;
+}
+
+.lightmode .dropdown a:hover {
+  background-color: #ff7043;
+  color: #ffffff;
+  padding-left: 25px;
+}
+
+.lightmode .menu-item:hover .dropdown {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightmode .login-button {
+  display: inline-block;
+  margin-left: 20px;
+  background-color: #ff7f50;
+  color: #ffffff;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+}
+
+.lightmode .login-button a {
+  color: white;
+  text-decoration: none;
+}
+
+.lightmode .login-button:hover {
+  background-color: #ff7043;
+  transform: scale(1.05);
+}
+
+.lightmode .login-button:focus {
+  outline: 3px solid #ff7043;
+}
+
+/* Light mode button design */
+.lightmode .lightmode-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #ffd700 40%,
+    #ff8c00 70%,
+    rgba(255, 140, 0, 0) 80%
+  );
+  border: none;
+  box-shadow: 0 0 15px #ffcc00, 0 0 30px rgba(255, 204, 0, 0.6),
+    0 0 50px rgba(255, 204, 0, 0.3);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease-in-out, transform 0.2s ease;
+  transform-style: preserve-3d;
+  transform-origin: center;
+  animation: earth-rotation-light 10s infinite linear;
+}
+
+.lightmode .lightmode-button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 130%;
+  height: 130%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 204, 0, 0.3) 30%,
+    rgba(255, 204, 0, 0) 80%
+  );
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes earth-rotation-light {
+  0% {
+    transform: rotateY(0deg) rotateX(23deg);
+  }
+  100% {
+    transform: rotateY(360deg) rotateX(23deg);
+  }
+}
+
+.lightmode .lightmode-button:hover {
+  box-shadow: 0 0 25px #ffcc00, 0 0 50px rgba(255, 204, 0, 0.8),
+    0 0 75px rgba(255, 204, 0, 0.3);
+  transform: scale(1.1) rotateY(15deg);
+}
+
+.lightmode .lightmode-button:active {
+  background: radial-gradient(
+    circle,
+    #ffec80 40%,
+    #ffae00 70%,
+    rgba(255, 140, 0, 0) 80%
+  );
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.3);
+}
+.lightmode .main-titles {
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #121212;
+  margin-top: 80px;
+  padding: 0;
+}
+/* Additional elements like cards, forms, buttons, etc. will also need to be adapted for light mode */
+.lightmode p {
+  color: #121212;
+}
+
+.lightmode h2 {
+  color: #121212;
+}
+
+.lightmode h3 {
+  color: #121212;
+}
+.lightmode .top-ranked-anime {
+  padding: 40px 20px;
+  color: #121212;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 40px;
+  margin-bottom: 40px;
+  background: #f9f9f9;
+}
+
+.lightmode #website-into {
+  max-width: 900px;
+  color: #121212;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.lightmode #top-five-anime {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 40px;
+  gap: 20px;
+  padding: 40px 20px;
+  border-radius: 10px;
+  color: #121212;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+}
+
+.lightmode #top-five-anime .anime-card {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  width: 280px;
+  height: 350px;
+  margin: 0 auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.lightmode #top-five-anime .anime-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.lightmode #suggestion-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  margin-top: 40px;
+  font-family: "Quicksand", Arial, sans-serif;
+  color: #121212;
+}
+.lightmode #suggestion-form fieldset {
+  border: 1px solid #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+}
+.lightmode #suggestion-form legend {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1em;
+  color: #121212;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.lightmode #suggestion-form label {
+  display: inline-block;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  color: #121212;
+  padding-left: 20px;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+.lightmode #suggestion-form input[type="radio"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #f9f9f9;
+  border: 3px solid #ff7f50;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+#suggestion-form input[type="radio"]:checked {
+  background-color: #ff7f50;
+}
+.lightmode #suggestion-form input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: white;
+  transform: translate(-50%, -50%);
+}
+.lightmode #suggestion-form input[type="radio"]:hover {
+  background-color: #ff7043;
+}
+.lightmode #suggestion-form label:hover {
+  color: #ff7043;
+}
+.lightmode #suggestion-form button {
+  background-color: #ffffff;
+  color: #121212;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: block;
+  margin-top: 20px;
+  width: 100%;
+}
+#suggestion-form button:hover {
+  background-color: #ff7043;
+  transform: scale(1.05);
+}
+@media (max-width: 768px) {
+  #suggestion-form {
+    padding: 20px;
+  }
+  #suggestion-form fieldset {
+    padding: 15px;
+  }
+  #suggestion-form button {
+    padding: 12px;
+  }
+}
+
+dialog {
+  margin: 0;
+  font-family: "Quicksand", Arial, sans-serif;
+  background-color: #ffffff; /* Dark background */
+  color: #121212; /* Light gray text for readability */
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+dialog button {
+  background-color: #ffffff;
+  color: #121212;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: block;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.lightmode button:hover {
+  background-color: #ff7043;
+  transform: scale(1.05);
+}
+
+.lightmode #render-zone {
+  display: flex;
+  margin-top: 40px;
+  gap: 20px;
+  padding: 40px 20px;
+  border-radius: 10px;
+  color: #121212;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  background: #ffffff;
+  align-items: center;
+  justify-content: center;
+}
+
+/* customizations for the dropdown menus */
+.lightmode .menu-item:focus,
+.darkmode .menu-item:focus {
+  outline: 3px dashed #ff7043; /* Ensures keyboard focus is visible */
+  outline-offset: 3px;
+}
+.lightmode .dropdown,
+.darkmode .dropdown {
+  transition: opacity 0.3s ease, visibility 0.5s ease 0.3s;
+}
+/* Light Mode transition on the whole page */
+html {
+  transition: all 0.4s ease-in-out;
 }
