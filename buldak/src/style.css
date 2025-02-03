@@ -340,7 +340,7 @@ body.darkmode {
   color: #ffffff;
   text-align: center;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  background: #1c1c1c;
+  background: #121212;
 }
 .darkmode #top-five-anime .anime-card {
   background: rgba(0, 0, 0, 0.5);
@@ -374,6 +374,7 @@ body.darkmode {
   text-align: center;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
+
 #top-five-anime .anime-card img {
   width: 100%;
   height: auto;
@@ -868,8 +869,8 @@ body.lightmode {
 }
 
 .lightmode #top-five-anime .anime-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
 }
 
 .lightmode #suggestion-form {

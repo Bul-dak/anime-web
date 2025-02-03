@@ -7,10 +7,9 @@ import { renderUserContent } from "../src/render-functions";
 import { renderGenderList, genreListPageScroller } from "./genre-helpers";
 import { fetchAnimesBasedOnGenre, fetchAnimes } from "./genre-fetch-helpers";
 
-import {
-  setLocalStorageKey,
-  checkAndApplyTheme,
-} from "../src/local-storage-helpers";
+import { setLocalStorageKey } from "../src/local-storage-helpers";
+
+import { checkAndApplyTheme } from "../src/dom-helpers";
 
 // call renderUserContent which changes the display of the top bar based on whether the user is online vs offline
 renderUserContent();

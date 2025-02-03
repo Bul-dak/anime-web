@@ -1,10 +1,10 @@
 import "./log-in.css";
 
+// Import theme fuction from dom-helpers.js
+import { checkAndApplyTheme } from "../src/dom-helpers";
+
 // import local storage helpers
-import {
-  setLocalStorageKey,
-  checkAndApplyTheme,
-} from "../src/local-storage-helpers";
+import { setLocalStorageKey } from "../src/local-storage-helpers";
 
 // import login-helpers
 import { verifyLogin } from "./login-helpers";

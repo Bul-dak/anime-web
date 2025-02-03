@@ -2,13 +2,11 @@ import {
   handleLoad,
   handleRandomButton,
   handleSubmitRecommendation,
+  checkAndApplyTheme,
 } from "./dom-helpers";
 import "./style.css";
 import { fetchAllAnime } from "./fetch-functions";
-import {
-  setLocalStorageKey,
-  checkAndApplyTheme,
-} from "./local-storage-helpers";
+import { setLocalStorageKey } from "./local-storage-helpers";
 import { renderTopFiveAnime, renderUserContent } from "./render-functions";
 import { setRecommendedAnime } from "./local-storage-helpers";
 
@@ -56,10 +54,13 @@ const initializeTheme = () => {
 
 // Helper function to toggle themes
 const toggleTheme = (theme, body) => {
-  const oppositeTheme = theme === "light" ? "dark" : "light";
-  body.classList.toggle(`${theme}mode`);
-  body.classList.remove(`${oppositeTheme}mode`);
-  localStorage.setItem("theme", theme);
+  if (theme !== localStorage.getItem("theme")) {
+    const oppositeTheme = theme === "light" ? "dark" : "light";
+    body.classList.toggle(`${theme}mode`);
+    body.classList.remove(`${oppositeTheme}mode`);
+    console.log(body.classList);
+    localStorage.setItem("theme", theme);
+  }
 };
 
 // Function to fetch and render all anime-related data
