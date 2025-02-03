@@ -1033,7 +1033,7 @@ html {
 @media (max-width: 1024px) {
   .lightmode .menu {
     align-items: center;
-    margin-left: 20px;
+    margin-left: 10px;
     gap: 0px;
   }
 
@@ -1044,12 +1044,15 @@ html {
 
 @media (max-width: 480px) {
   .lightmode #website-name {
-    font-size: 1.5rem;
-    font-weight: 350;
+    align-items: center;
+    margin-left: 10px;
+    gap: 0px;
+    font-size: 1.2rem;
+    font-weight: 320;
   }
 
   .lightmode .menu-item {
-    font-size: 0.8rem; /* Smaller font size for very small screens */
+    font-size: 0.7rem; /* Smaller font size for very small screens */
   }
 
   #top-five-anime {
@@ -1058,6 +1061,10 @@ html {
 
   .anime-card {
     width: 100%; /* Makes cards full width on smaller screens */
+  }
+  .lightmode .login-button {
+    padding: 3px 8px; /* Adjust padding for smaller screens */
+    font-size: 0.6rem; /* Slightly smaller font size */
   }
 }
 
