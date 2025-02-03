@@ -48,7 +48,9 @@ body.darkmode {
 }
 .darkmode .menu {
   display: flex;
-  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center; /* Adjusts menu items to center when wrapping */
+  gap: 20px;
 }
 .darkmode .menu-item {
   position: relative;
@@ -332,8 +334,10 @@ body.darkmode {
 }
 .darkmode #top-five-anime {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin-top: 40px;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(280px, 1fr)
+  ); /* Automatically adjusts columns based on screen width */
   gap: 20px;
   padding: 40px 20px;
   border-radius: 10px;
@@ -637,7 +641,9 @@ body.lightmode {
 
 .lightmode .menu {
   display: flex;
-  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center; /* Adjusts menu items to center when wrapping */
+  gap: 20px;
 }
 
 .lightmode .menu-item {
@@ -845,9 +851,12 @@ body.lightmode {
 
 .lightmode #top-five-anime {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin-top: 40px;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(280px, 1fr)
+  ); /* Automatically adjusts columns based on screen width */
   gap: 20px;
+  margin-top: 40px;
   padding: 40px 20px;
   border-radius: 10px;
   color: #121212;
@@ -1047,5 +1056,18 @@ html {
 
   .anime-card {
     width: 100%; /* Makes cards full width on smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .login-button {
+    padding: 10px 15px; /* Adjust padding for smaller screens */
+    font-size: 1rem; /* Slightly smaller font size */
+  }
+
+  .lightmode-button,
+  .darkmode-button {
+    width: 40px;
+    height: 40px;
   }
 }
