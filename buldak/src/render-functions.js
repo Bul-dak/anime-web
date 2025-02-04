@@ -111,7 +111,7 @@ export const renderTopFiveAnime = () => {
   // store the div where we'll be rendering our top ranked anime in a variable
   const topFiveDiv = document.querySelector("#top-five-anime");
   // Iterate through the first 5 items in array since anime in array are already stored in a rank base order.
-  for (let i = 0; i <= 5; i++) {
+  for (let i = 0; i <= 7; i++) {
     // create a div and with two elements inside. (top one will be the image and second one will be the title)
     const div = document.createElement("div");
     div.classList = "anime-card";
