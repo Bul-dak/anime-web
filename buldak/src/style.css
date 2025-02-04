@@ -1075,6 +1075,12 @@ html {
     margin-left: 5px;
   }
 
+  .lightmode .username {
+    font-size: 0.7rem; /* Smaller font size for very small screens */
+    margin-left: 5px;
+    margin-right: 10px;
+  }
+
   .lightmode .dropdown a {
     font-size: 0.65rem;
     font-weight: 300;
