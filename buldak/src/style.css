@@ -1037,6 +1037,12 @@ html {
     gap: 0px;
   }
 
+  .darkmode .menu {
+    align-items: center;
+    margin-left: 10px;
+    gap: 0px;
+  }
+
   #top-five-anime {
     grid-template-columns: repeat(2, 1fr); /* Two columns for medium screens */
   }
@@ -1051,8 +1057,22 @@ html {
     font-weight: 320;
   }
 
+  .darkmode #website-name {
+    align-items: center;
+    margin-left: 3px;
+    gap: 0px;
+    font-size: 1.2rem;
+    font-weight: 320;
+  }
+
   .lightmode .menu-item {
     font-size: 0.7rem; /* Smaller font size for very small screens */
+    margin-left: 5px;
+  }
+
+  .darkmode .menu-item {
+    font-size: 0.7rem; /* Smaller font size for very small screens */
+    margin-left: 5px;
   }
 
   #top-five-anime {
@@ -1066,6 +1086,10 @@ html {
     padding: 3px 8px; /* Adjust padding for smaller screens */
     font-size: 0.6rem; /* Slightly smaller font size */
   }
+  .darkmode .login-button {
+    padding: 3px 8px; /* Adjust padding for smaller screens */
+    font-size: 0.6rem; /* Slightly smaller font size */
+  }
 }
 
 @media (max-width: 768px) {
@@ -1074,9 +1098,22 @@ html {
     font-size: 0.8rem; /* Slightly smaller font size */
   }
 
+  .darkmode .login-button {
+    padding: 5px 10px; /* Adjust padding for smaller screens */
+    font-size: 0.8rem; /* Slightly smaller font size */
+  }
+
   .lightmode .lightmode-button,
   .darkmode-button {
     width: 25px;
     height: 25px;
+    margin-right: 5px;
+  }
+
+  .darkmode .lightmode-button,
+  .darkmode-button {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
   }
 }

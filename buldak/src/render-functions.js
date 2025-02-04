@@ -183,7 +183,7 @@ export const renderUsername = (user) => {
 
     // Insert HTML structure for username and dropdown
     loginDiv.innerHTML = `
-      <h4>${user.username}</h4>
+      <h4 class="menu-item">${user.username}</h4>
       <div class="dropdown">
         <a href="/anime-web/watchlist/watchlist.html">Watchlist</a>
         <a href="#" class="logout">Logout</a>
