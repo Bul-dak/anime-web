@@ -1051,7 +1051,7 @@ html {
 @media (max-width: 480px) {
   .lightmode #website-name {
     align-items: center;
-    margin-left: -10px;
+    margin-left: -22px;
     gap: 0px;
     font-size: 1.2rem;
     font-weight: 320;
@@ -1059,7 +1059,7 @@ html {
 
   .darkmode #website-name {
     align-items: center;
-    margin-left: -10px;
+    margin-left: -22px;
     gap: 0px;
     font-size: 1.2rem;
     font-weight: 320;
@@ -1130,6 +1130,6 @@ html {
   .darkmode-button {
     width: 25px;
     height: 25px;
-    margin-right: 5px;
+    margin-right: 8px;
   }
 }
