@@ -720,3 +720,107 @@ dialog button {
 html {
   transition: all 0.4s ease-in-out;
 }
+
+@media (max-width: 1024px) {
+  .lightmode .menu {
+    align-items: center;
+    margin-left: 10px;
+    gap: 0px;
+  }
+
+  .darkmode .menu {
+    align-items: center;
+    margin-left: 10px;
+    gap: 0px;
+  }
+
+  #top-five-anime {
+    grid-template-columns: repeat(2, 1fr); /* Two columns for medium screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .lightmode #website-name {
+    align-items: center;
+    margin-left: -27px;
+    gap: 0px;
+    font-size: 1.2rem;
+    font-weight: 320;
+  }
+
+  .darkmode #website-name {
+    align-items: center;
+    margin-left: -27px;
+    gap: 0px;
+    font-size: 1.2rem;
+    font-weight: 320;
+  }
+
+  .lightmode .menu-item {
+    font-size: 0.7rem; /* Smaller font size for very small screens */
+    margin-left: 5px;
+  }
+
+  .darkmode .menu-item {
+    font-size: 0.7rem; /* Smaller font size for very small screens */
+    margin-left: 5px;
+  }
+
+  .lightmode .username {
+    font-size: 0.7rem; /* Smaller font size for very small screens */
+    margin-left: 5px;
+    margin-right: 10px;
+  }
+
+  .lightmode .dropdown a {
+    font-size: 0.65rem;
+    font-weight: 300;
+  }
+
+  .darkmode .dropdown a {
+    font-size: 0.65rem;
+    font-weight: 300;
+  }
+
+  #top-five-anime {
+    grid-template-columns: 1fr;
+  }
+
+  .anime-card {
+    width: 100%; /* Makes cards full width on smaller screens */
+  }
+  .lightmode .login-button {
+    padding: 3px 8px; /* Adjust padding for smaller screens */
+    font-size: 0.6rem; /* Slightly smaller font size */
+  }
+  .darkmode .login-button {
+    padding: 3px 8px; /* Adjust padding for smaller screens */
+    font-size: 0.6rem; /* Slightly smaller font size */
+  }
+}
+
+@media (max-width: 768px) {
+  .lightmode .login-button {
+    padding: 5px 10px; /* Adjust padding for smaller screens */
+    font-size: 0.8rem; /* Slightly smaller font size */
+  }
+
+  .darkmode .login-button {
+    padding: 5px 10px; /* Adjust padding for smaller screens */
+    font-size: 0.8rem; /* Slightly smaller font size */
+  }
+
+  .lightmode .lightmode-button,
+  .darkmode-button {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+  }
+
+  .darkmode .lightmode-button,
+  .darkmode-button {
+    width: 25px;
+    height: 25px;
+    margin-right: 8px;
+  }
+}
