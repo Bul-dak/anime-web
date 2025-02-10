@@ -53,15 +53,15 @@ body.darkmode {
   gap: 30px;
 }
 
-.dropdown {
+.darkmode .dropdown {
   transform: translateZ(0); /* Trigger GPU acceleration */
 }
 
-.menu-item .dropdown {
+.darkmode .menu-item .dropdown {
   -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on mobile Safari */
 }
 
-.menu-item .dropdown.show {
+.darkmode .menu-item .dropdown.show {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
