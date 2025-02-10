@@ -163,60 +163,56 @@ export const renderRecommendedAnime = (animeObj) => {
   }
 };
 
-// renderUsername function
 export const renderUsername = (user) => {
   if (!user || !user.username) {
     console.error("Invalid user object or missing username.");
     return;
   }
 
+  // Select the login button container
   const loginDiv = document.querySelector(".login-button");
   if (!loginDiv) {
     console.error("Login button container not found.");
     return;
   }
 
-  loginDiv.innerHTML = ""; // Clear previous content
-  loginDiv.classList.replace("login-button", "menu-item");
+  try {
+    // Clear and update the loginDiv
+    loginDiv.innerHTML = "";
+    loginDiv.classList.replace("login-button", "menu-item");
 
-  const usernameElement = document.createElement("h4");
-  usernameElement.classList.add("username");
-  usernameElement.textContent = user.username;
+    // Insert HTML structure for username and dropdown
+    loginDiv.innerHTML = `
+      <h4 class="username">${user.username}</h4>
+      <div class="dropdown">
+        <a href="/anime-web/watchlist/watchlist.html">Watchlist</a>
+        <a href="#" class="logout">Logout</a>
+      </div>
+    `;
 
-  const dropdownDiv = document.createElement("div");
-  dropdownDiv.classList.add("dropdown");
-  dropdownDiv.innerHTML = `
-    <a href="/anime-web/watchlist/watchlist.html">Watchlist</a>
-    <a href="#" class="logout">Logout</a>
-  `;
-
-  loginDiv.appendChild(usernameElement);
-  loginDiv.appendChild(dropdownDiv);
-
-  const logoutButton = loginDiv.querySelector(".logout");
-  logoutButton.addEventListener("click", (event) => {
-    event.preventDefault();
-    localStorage.removeItem("activeUser");
-
-    // Avoid relative path confusion
-    const currentPath = window.location.pathname;
-    // Check if we're already on the index page
-    if (currentPath !== "/index.html") {
-      window.location.href = "/index.html";
-    } else {
-      // Optionally, just reload the page
-      window.location.reload();
-    }
-  });
+    // Add logout functionality
+    const logoutButton = loginDiv.querySelector(".logout");
+    logoutButton.addEventListener("click", (event) => {
+      try {
+        event.preventDefault();
+        localStorage.removeItem("activeUser");
+        window.location.href = "../index.html";
+      } catch (error) {
+        console.error("Error during logout process:", error);
+      }
+    });
+  } catch (error) {
+    console.error("Error rendering username dropdown:", error);
+  }
 };
 
-// renderUserContent function
+/**
+ * Render user-specific content if a user is logged in.
+ */
 export const renderUserContent = () => {
   document.addEventListener("DOMContentLoaded", () => {
     try {
       const activeUser = JSON.parse(localStorage.getItem("activeUser"));
-
-      console.log("Active User:", activeUser);
 
       if (activeUser?.username) {
         renderUsername(activeUser);
@@ -228,7 +224,6 @@ export const renderUserContent = () => {
     }
   });
 };
-
 export const renderAnimeDetailsWatchlist = (animeObj) => {
   console.log("Render Anime Details object check: ", animeObj);
 
