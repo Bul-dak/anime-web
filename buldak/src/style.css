@@ -667,14 +667,13 @@ body.lightmode {
 }
 
 .lightmode .dropdown {
-  display: none;
   position: absolute;
   top: 100%;
   left: 0;
   background-color: #e0e0e0;
   border-radius: 8px;
   min-width: 110px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
   overflow: hidden;
   z-index: 1000;
   opacity: 0;
