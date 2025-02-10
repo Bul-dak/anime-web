@@ -70,22 +70,6 @@ const setupAnimeData = async () => {
     await fetchAllAnime("https://api.jikan.moe/v4/top/anime");
     renderTopFiveAnime();
     renderUserContent();
-    const menuItem = document.querySelector(".menu-item");
-    const dropdown = menuItem.querySelector(".dropdown");
-
-    // Only toggle the dropdown once per click or touch event
-    const toggleDropdown = (e) => {
-      e.preventDefault();
-      dropdown.classList.toggle("show");
-    };
-
-    menuItem.addEventListener("click", toggleDropdown);
-    menuItem.addEventListener("touchstart", (e) => {
-      e.preventDefault();
-      if (!dropdown.classList.contains("show")) {
-        toggleDropdown(e);
-      }
-    });
   } catch (error) {
     console.error("Error setting up anime data:", error);
   }
