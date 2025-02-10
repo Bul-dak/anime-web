@@ -1,4 +1,4 @@
-body {
+body.darkmode {
   margin: 0;
   font-family: "Quicksand", Arial, sans-serif;
   background-color: #121212; /* Dark background */
@@ -6,7 +6,8 @@ body {
   line-height: 1.6;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
-.top-bar {
+
+.darkmode .top-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,7 +21,7 @@ body {
   border-bottom: 2px solid #444444; /* Darker border */
   transition: background-color 0.3s ease;
 }
-#website-name {
+.darkmode #website-name {
   font-family: "Poppins", sans-serif;
   font-size: 2rem;
   font-weight: 700;
@@ -34,7 +35,7 @@ body {
   text-shadow: 0 0 20px rgba(255, 255, 255, 0.9),
     0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.7);
 }
-#website-name {
+.darkmode #website-name {
   background: linear-gradient(to right, #ff5f6d, #ffc3a0);
   -webkit-background-clip: text;
   background-clip: text;
@@ -42,33 +43,55 @@ body {
   display: inline-block;
   text-shadow: none;
 }
-#website-name:hover {
+.darkmode #website-name:hover {
   cursor: pointer;
 }
-.menu {
+.darkmode .menu {
   display: flex;
   gap: 30px;
 }
-.menu-item {
+
+/* Darkmode - menu item styles */
+.darkmode .menu-item {
   position: relative;
   cursor: pointer;
   margin-right: 40px;
   font-size: 1.1rem;
-  font-weight: 500;
-  color: #ffffff;
+  font-weight: 500 !important;
+  color: #e0e0e0; /* Lighter color for dark mode text */
   transition: color 0.3s ease, transform 0.3s ease;
   text-transform: capitalize;
 }
-.menu-item:hover {
+
+.darkmode .menu-item:hover {
+  color: #ff7043; /* Highlight color when hovered */
+  transform: scale(1.1);
+}
+
+/* Darkmode - menu item styles */
+.darkmode .menu-item {
+  position: relative;
+  cursor: pointer;
+  margin-right: 40px;
+  font-size: 1.1rem;
+  font-weight: 600; /* Match the weight defined in your linked font */
+  color: #e0e0e0;
+  transition: color 0.3s ease, transform 0.3s ease;
+  text-transform: capitalize;
+  font-family: "Poppins", sans-serif; /* Ensure correct font family */
+}
+
+.darkmode .menu-item:hover {
   color: #ff7043;
   transform: scale(1.1);
 }
-/* For dark mode, dropdown initially hidden */
+
+/* Darkmode - dropdown styles */
 .darkmode .dropdown {
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #333333;
+  background-color: #333;
   border-radius: 8px;
   min-width: 110px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
@@ -76,11 +99,11 @@ body {
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
-  pointer-events: none; /* Prevent interaction when hidden */
+  pointer-events: none;
   transition: opacity 0.3s ease, visibility 0s linear 0.3s;
 }
 
-/* Dropdown links */
+/* Darkmode - dropdown link styles */
 .darkmode .dropdown a {
   display: block;
   padding: 12px 20px;
@@ -88,22 +111,22 @@ body {
   color: #e0e0e0;
   font-size: 0.9rem;
   font-weight: 400;
+  font-family: "Poppins", sans-serif; /* Ensure font family for links */
   transition: background-color 0.3s ease, color 0.3s ease,
     padding-left 0.2s ease;
 }
 
-/* Hover effect for links */
 .darkmode .dropdown a:hover {
   background-color: #ff7043;
   color: #ffffff;
   padding-left: 25px;
 }
 
-/* Show dropdown when hovering over the parent */
+/* Darkmode - dropdown visibility on hover */
 .darkmode .menu-item:hover .dropdown {
   opacity: 1;
   visibility: visible;
-  pointer-events: auto; /* Enable interaction */
+  pointer-events: auto;
   transition: opacity 0.3s ease, visibility 0s linear 0s;
 }
 
@@ -577,7 +600,6 @@ body.lightmode {
   pointer-events: auto; /* Enable interaction */
   transition: opacity 0.3s ease, visibility 0s linear 0s;
 }
-
 
 .lightmode .login-button {
   display: inline-block;
