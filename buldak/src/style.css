@@ -43,13 +43,16 @@ body.darkmode {
   display: inline-block;
   text-shadow: none;
 }
+
 .darkmode #website-name:hover {
   cursor: pointer;
 }
+
 .darkmode .menu {
   display: flex;
   gap: 30px;
 }
+
 .darkmode .menu-item {
   position: relative;
   cursor: pointer;
@@ -60,12 +63,13 @@ body.darkmode {
   transition: color 0.3s ease, transform 0.3s ease;
   text-transform: capitalize;
 }
+
 .darkmode .menu-item:hover {
   color: #ff7043;
   transform: scale(1.1);
 }
+/* For dark mode, dropdown initially hidden */
 .darkmode .dropdown {
-  display: none;
   position: absolute;
   top: 100%;
   left: 0;
@@ -77,8 +81,11 @@ body.darkmode {
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
+  pointer-events: none; /* Prevent interaction when hidden */
   transition: opacity 0.3s ease, visibility 0s linear 0.3s;
 }
+
+/* Dropdown links */
 .darkmode .dropdown a {
   display: block;
   padding: 12px 20px;
@@ -89,17 +96,22 @@ body.darkmode {
   transition: background-color 0.3s ease, color 0.3s ease,
     padding-left 0.2s ease;
 }
+
+/* Hover effect for links */
 .darkmode .dropdown a:hover {
   background-color: #ff7043;
   color: #ffffff;
   padding-left: 25px;
 }
+
+/* Show dropdown when hovering over the parent */
 .darkmode .menu-item:hover .dropdown {
-  display: block;
   opacity: 1;
   visibility: visible;
+  pointer-events: auto; /* Enable interaction */
   transition: opacity 0.3s ease, visibility 0s linear 0s;
 }
+
 .darkmode .login-button {
   display: inline-block;
   margin-left: 20px;
@@ -659,16 +671,18 @@ body.lightmode {
 }
 
 .lightmode .dropdown {
-  display: none;
   position: absolute;
   top: 100%;
   left: 0;
   background-color: #e0e0e0;
   border-radius: 8px;
   min-width: 110px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  z-index: 1000;
   opacity: 0;
   visibility: hidden;
+  pointer-events: none; /* Prevent interaction when hidden */
   transition: opacity 0.3s ease, visibility 0s linear 0.3s;
 }
 
@@ -690,9 +704,10 @@ body.lightmode {
 }
 
 .lightmode .menu-item:hover .dropdown {
-  display: block;
   opacity: 1;
   visibility: visible;
+  pointer-events: auto; /* Enable interaction */
+  transition: opacity 0.3s ease, visibility 0s linear 0s;
 }
 
 .lightmode .login-button {
@@ -1067,15 +1082,23 @@ html {
 
   .lightmode .menu-item {
     font-size: 0.7rem; /* Smaller font size for very small screens */
-    margin-left: 5px;
+    margin-left: 3px;
+    margin-right: 15px;
   }
 
   .darkmode .menu-item {
     font-size: 0.7rem; /* Smaller font size for very small screens */
-    margin-left: 5px;
+    margin-left: 3px;
+    margin-right: 15px;
   }
 
   .lightmode .username {
+    font-size: 0.7rem; /* Smaller font size for very small screens */
+    margin-left: 5px;
+    margin-right: 10px;
+  }
+
+  .darkmode .username {
     font-size: 0.7rem; /* Smaller font size for very small screens */
     margin-left: 5px;
     margin-right: 10px;
@@ -1123,7 +1146,7 @@ html {
   .darkmode-button {
     width: 25px;
     height: 25px;
-    margin-right: 5px;
+    margin-right: 8px;
   }
 
   .darkmode .lightmode-button,
