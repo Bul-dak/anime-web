@@ -73,10 +73,18 @@ const setupAnimeData = async () => {
     const menuItem = document.querySelector(".menu-item");
     const dropdown = menuItem.querySelector(".dropdown");
 
-    menuItem.addEventListener("click", () => {
-      dropdown.style.opacity = dropdown.style.opacity === "1" ? "0" : "1";
-      dropdown.style.visibility =
-        dropdown.style.opacity === "1" ? "visible" : "hidden";
+    // Only toggle the dropdown once per click or touch event
+    const toggleDropdown = (e) => {
+      e.preventDefault();
+      dropdown.classList.toggle("show");
+    };
+
+    menuItem.addEventListener("click", toggleDropdown);
+    menuItem.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      if (!dropdown.classList.contains("show")) {
+        toggleDropdown(e);
+      }
     });
   } catch (error) {
     console.error("Error setting up anime data:", error);

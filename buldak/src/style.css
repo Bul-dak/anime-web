@@ -53,12 +53,20 @@ body.darkmode {
   gap: 30px;
 }
 
-.menu-item:hover .dropdown,
-.menu-item:active .dropdown {
+.dropdown {
+  transform: translateZ(0); /* Trigger GPU acceleration */
+}
+
+.menu-item .dropdown {
+  -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on mobile Safari */
+}
+
+.menu-item .dropdown.show {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
+
 .darkmode .menu-item {
   position: relative;
   cursor: pointer;
@@ -69,6 +77,7 @@ body.darkmode {
   transition: color 0.3s ease, transform 0.3s ease;
   text-transform: capitalize;
 }
+
 .darkmode .menu-item:hover {
   color: #ff7043;
   transform: scale(1.1);
