@@ -53,6 +53,12 @@ body.darkmode {
   gap: 30px;
 }
 
+.menu-item:hover .dropdown,
+.menu-item:active .dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
 .darkmode .menu-item {
   position: relative;
   cursor: pointer;
