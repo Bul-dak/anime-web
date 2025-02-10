@@ -849,10 +849,14 @@ html {
   .lightmode .login-button {
     padding: 3px 8px; /* Adjust padding for smaller screens */
     font-size: 0.6rem; /* Slightly smaller font size */
+    margin-left: 5px;
+    margin-right: 10px;
   }
   .darkmode .login-button {
     padding: 3px 8px; /* Adjust padding for smaller screens */
     font-size: 0.6rem; /* Slightly smaller font size */
+    margin-left: 5px;
+    margin-right: 10px;
   }
 }
 
