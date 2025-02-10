@@ -197,7 +197,13 @@ export const renderUsername = (user) => {
   logoutButton.addEventListener("click", (event) => {
     event.preventDefault();
     localStorage.removeItem("activeUser");
-    window.location.href = "../index.html";
+    // Check if we're already on the index page
+    if (window.location.pathname !== "/index.html") {
+      window.location.href = "../index.html";
+    } else {
+      // Optionally, just reload the page
+      window.location.reload();
+    }
   });
 };
 
