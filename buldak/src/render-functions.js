@@ -196,7 +196,12 @@ export const renderUsername = (user) => {
       try {
         event.preventDefault();
         localStorage.removeItem("activeUser");
-        window.location.href = "/anime-web/index.html";
+        if (window.location.pathname !== "/anime-web/index.html") {
+          window.location.href = "/anime-web/index.html";
+        } else {
+          // Optionally, just reload the page
+          window.location.reload();
+        }
       } catch (error) {
         console.error("Error during logout process:", error);
       }
