@@ -199,7 +199,7 @@ export const renderUsername = (user) => {
     localStorage.removeItem("activeUser");
     // Check if we're already on the index page
     if (window.location.pathname !== "/index.html") {
-      window.location.href = "../index.html";
+      window.location.href = "/index.html";
     } else {
       // Optionally, just reload the page
       window.location.reload();
