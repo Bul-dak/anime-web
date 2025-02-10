@@ -190,6 +190,26 @@ export const renderUsername = (user) => {
       </div>
     `;
 
+    // Handle the touch interactions to simulate hover on mobile
+    const username = loginDiv.querySelector(".username");
+    const dropdown = loginDiv.querySelector(".dropdown");
+
+    // Show the dropdown when the username is tapped
+    username.addEventListener("touchstart", () => {
+      dropdown.style.opacity = "1";
+      dropdown.style.visibility = "visible";
+      dropdown.style.pointerEvents = "auto"; // Enable interaction with the dropdown
+    });
+
+    // Hide the dropdown when the user taps outside of it
+    document.addEventListener("touchstart", (event) => {
+      if (!loginDiv.contains(event.target)) {
+        dropdown.style.opacity = "0";
+        dropdown.style.visibility = "hidden";
+        dropdown.style.pointerEvents = "none"; // Disable interaction
+      }
+    });
+
     // Add logout functionality
     const logoutButton = loginDiv.querySelector(".logout");
     logoutButton.addEventListener("click", (event) => {
