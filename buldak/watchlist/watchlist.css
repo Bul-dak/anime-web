@@ -238,6 +238,33 @@ body {
     font-size: 1rem;
   }
 }
+.darkmode dialog {
+  margin: 0;
+  font-family: "Quicksand", Arial, sans-serif;
+  background-color: #1f1f1f; /* Dark background */
+  color: #e0e0e0; /* Light gray text for readability */
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.darkmode dialog button {
+  background-color: #121212;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: block;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.darkmode dialog button:hover {
+  background-color: #ff7043;
+  transform: scale(1.05);
+}
 
 dialog {
   margin: 0;
