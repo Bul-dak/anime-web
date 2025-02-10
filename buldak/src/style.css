@@ -1067,15 +1067,23 @@ html {
 
   .lightmode .menu-item {
     font-size: 0.7rem; /* Smaller font size for very small screens */
-    margin-left: 5px;
+    margin-left: 3px;
+    margin-right: 15px;
   }
 
   .darkmode .menu-item {
     font-size: 0.7rem; /* Smaller font size for very small screens */
-    margin-left: 5px;
+    margin-left: 3px;
+    margin-right: 15px;
   }
 
   .lightmode .username {
+    font-size: 0.7rem; /* Smaller font size for very small screens */
+    margin-left: 5px;
+    margin-right: 10px;
+  }
+
+  .darkmode .username {
     font-size: 0.7rem; /* Smaller font size for very small screens */
     margin-left: 5px;
     margin-right: 10px;
@@ -1123,7 +1131,7 @@ html {
   .darkmode-button {
     width: 25px;
     height: 25px;
-    margin-right: 5px;
+    margin-right: 8px;
   }
 
   .darkmode .lightmode-button,
