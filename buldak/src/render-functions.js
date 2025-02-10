@@ -197,8 +197,11 @@ export const renderUsername = (user) => {
   logoutButton.addEventListener("click", (event) => {
     event.preventDefault();
     localStorage.removeItem("activeUser");
+
+    // Avoid relative path confusion
+    const currentPath = window.location.pathname;
     // Check if we're already on the index page
-    if (window.location.pathname !== "/index.html") {
+    if (currentPath !== "/index.html") {
       window.location.href = "/index.html";
     } else {
       // Optionally, just reload the page
