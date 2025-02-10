@@ -43,37 +43,14 @@ body.darkmode {
   display: inline-block;
   text-shadow: none;
 }
+
 .darkmode #website-name:hover {
   cursor: pointer;
 }
+
 .darkmode .menu {
   display: flex;
   gap: 30px;
-}
-.menu-item {
-  position: relative;
-}
-
-.menu-item .dropdown {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #333333;
-  border-radius: 8px;
-  min-width: 110px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
-  z-index: 1000;
-  pointer-events: none; /* Disable interaction when hidden */
-}
-
-.menu-item:hover .dropdown {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto; /* Enable interaction when visible */
-  transition: opacity 0.3s ease, visibility 0s linear 0s;
 }
 
 .darkmode .menu-item {

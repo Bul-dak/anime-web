@@ -70,6 +70,14 @@ const setupAnimeData = async () => {
     await fetchAllAnime("https://api.jikan.moe/v4/top/anime");
     renderTopFiveAnime();
     renderUserContent();
+    const menuItem = document.querySelector(".menu-item");
+    const dropdown = menuItem.querySelector(".dropdown");
+
+    menuItem.addEventListener("click", () => {
+      dropdown.style.opacity = dropdown.style.opacity === "1" ? "0" : "1";
+      dropdown.style.visibility =
+        dropdown.style.opacity === "1" ? "visible" : "hidden";
+    });
   } catch (error) {
     console.error("Error setting up anime data:", error);
   }
